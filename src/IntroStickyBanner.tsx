@@ -56,20 +56,21 @@ export default class IntroStickyBanner extends Component<
             "url('https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F35324523450203539_364356239.png?alt=media')",
         }}
       >
-        <div style={{ display: "flex", flex: 0, padding: 10, height: "100%" }}>
+        <div style={{ display: "flex", flex: 0, height: "100%" }}>
           <div
             style={{
               flexBasis: 2,
+              display: "flex",
               flexGrow: 2,
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <p style={{ margin: 0 }}>
+            <p style={{ margin: 0, padding: 10 }}>
               Help me release my transcripts from a business hold. Since coming
               out as gay, my financial support has been rescinded.
+              <LinkText label="Read more" onClick={() => {}} />
             </p>
-            <LinkText label="Read more" onClick={() => {}} />
           </div>
           <div
             style={{
@@ -80,7 +81,7 @@ export default class IntroStickyBanner extends Component<
               alignItems: "center",
             }}
           >
-            <div>
+            <div style={{ textAlign: "center" }}>
               <LinkButton label="Invest $10" onClick={() => {}} />
               <span>In my future</span>
             </div>
