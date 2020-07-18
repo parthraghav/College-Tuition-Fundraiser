@@ -22,6 +22,7 @@ export default class InvisibleScroll extends Component<
     }
     let scrollPercentage =
       (element.scrollTop * 100) / (element.scrollHeight - element.clientHeight);
+
     if (between(scrollPercentage, 0, 10)) {
       // do something at end of scroll
       console.log("somewhere");
