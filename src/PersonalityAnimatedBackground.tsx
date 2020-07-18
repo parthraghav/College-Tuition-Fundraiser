@@ -17,6 +17,7 @@ interface PersonalityAnimatedBackgroundState {
   window_width: number;
   window_height: number;
   backgroundLeftMargin: number;
+  foregroundTransform: string;
 }
 
 export default class PersonalityAnimatedBackground extends Component<
@@ -28,13 +29,19 @@ export default class PersonalityAnimatedBackground extends Component<
 
   constructor(props: any) {
     super(props);
-    this.state = { window_width: 0, window_height: 0, backgroundLeftMargin: 0 };
+    this.state = {
+      window_width: 0,
+      window_height: 0,
+      backgroundLeftMargin: 0,
+      foregroundTransform: "unset",
+    };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
+    this.set_goggle_pos(GogglePos.Out);
   }
 
   componentWillUnmount() {
@@ -48,7 +55,26 @@ export default class PersonalityAnimatedBackground extends Component<
     });
   }
 
-  set_goggle_pos = (goggle_pos: GogglePos) => {};
+  set_goggle_pos = (goggle_pos: GogglePos) => {
+    var foregroundTransform;
+    switch (goggle_pos) {
+      case GogglePos.Out:
+        foregroundTransform = "translate(0%, -1000%)";
+        break;
+      case GogglePos.On:
+        foregroundTransform = "translate(-50%, 0%)";
+        break;
+      case GogglePos.Down:
+        foregroundTransform = "translate(-50%, 20%)";
+        break;
+      case GogglePos.Up:
+        foregroundTransform = "translate(-50%, -140%) scale(1,-1)";
+        break;
+    }
+    this.setState({
+      foregroundTransform,
+    });
+  };
 
   set_background_pos = (background_pos: BackgroundPosition) => {
     var backgroundLeftMargin;
@@ -65,13 +91,8 @@ export default class PersonalityAnimatedBackground extends Component<
     }
 
     this.setState({
-      backgroundLeftMargin: backgroundLeftMargin,
+      backgroundLeftMargin,
     });
-  };
-
-  map_goggle_state_to_pos = () => {
-    //(this.state.window_width - img_width) / 2
-    //-img_width / 2
   };
 
   render() {
@@ -107,7 +128,7 @@ export default class PersonalityAnimatedBackground extends Component<
               width: this.foregroundToBackgroundHorizontalRatio + "%",
               top: this.foregroundToBackgroundVerticalRatio + "%",
               left: "50%",
-              transform: "translate(-50%, 20%)",
+              transform: this.state.foregroundTransform,
               zIndex: 2,
             }}
           />
