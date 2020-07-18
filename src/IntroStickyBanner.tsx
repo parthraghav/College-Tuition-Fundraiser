@@ -52,6 +52,8 @@ export default class IntroStickyBanner extends Component<
           height: "20%",
           bottom: 0,
           color: "white",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           backgroundImage:
             "url('https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F35324523450203539_364356239.png?alt=media')",
         }}
@@ -66,11 +68,13 @@ export default class IntroStickyBanner extends Component<
               alignItems: "center",
             }}
           >
-            <p style={{ margin: 0, padding: 10 }}>
-              Help me release my transcripts from a business hold. Since coming
-              out as gay, my financial support has been rescinded.
+            <div style={{ padding: 10 }}>
+              <p style={{ margin: 0 }}>
+                Help me release my transcripts from a business hold. Since
+                coming out as gay, my financial support has been rescinded.
+              </p>
               <LinkText label="Read more" onClick={() => {}} />
-            </p>
+            </div>
           </div>
           <div
             style={{
