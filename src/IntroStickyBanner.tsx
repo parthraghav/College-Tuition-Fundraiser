@@ -50,10 +50,11 @@ export default class IntroStickyBanner extends Component<
           position: "absolute",
           width: "100%",
           height: "20%",
-          bottom: 0,
+          bottom: this.props.hidden ? "-20%" : 0,
           color: "white",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          transition: "bottom 1s",
           backgroundImage:
             "url('https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F35324523450203539_364356239.png?alt=media')",
         }}

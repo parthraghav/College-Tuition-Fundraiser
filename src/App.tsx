@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PersonalityAnimatedBackground from "./PersonalityAnimatedBackground";
 import logo from "./logo.svg";
 import "./App.css";
@@ -6,6 +6,9 @@ import IntroStickyBanner from "./IntroStickyBanner";
 import InvisibleScroll from "./InvisibleScroll";
 
 function App() {
+
+  const [ isIntroStickyBannerHidden, setIsIntroStickyBannerHidden ] = useState(false);
+
   return (
     <div
       style={{
@@ -18,8 +21,13 @@ function App() {
       }}
     >
       <PersonalityAnimatedBackground />
-      <InvisibleScroll />
-      <IntroStickyBanner />
+      <InvisibleScroll threshmap={{
+        20: (isApproaching:boolean) {
+          setIsIntroStickyBannerHidden(!isApproaching);
+        },
+
+      }} />
+      <IntroStickyBanner hidden={isIntroStickyBannerHidden} />
     </div>
   );
 }
