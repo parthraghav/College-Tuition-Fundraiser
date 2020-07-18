@@ -2,6 +2,7 @@ import React from "react";
 import PersonalityAnimatedBackground from "./PersonalityAnimatedBackground";
 import logo from "./logo.svg";
 import "./App.css";
+import IntroStickyBanner from "./IntroStickyBanner";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       }}
     >
       <PersonalityAnimatedBackground />
+      <IntroStickyBanner />
     </div>
   );
 }
