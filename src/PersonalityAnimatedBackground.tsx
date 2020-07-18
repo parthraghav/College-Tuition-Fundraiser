@@ -5,15 +5,21 @@ interface PersonalityAnimatedBackgroundState {
   width: number;
   height: number;
 }
-
+//0.32203389839
 //90497836_205798060836274_1081335742664220290_n
 export default class PersonalityAnimatedBackground extends Component<
   any,
   PersonalityAnimatedBackgroundState
 > {
+  foregroundToBackgroundHorizontalRatio: number = 0.32203389839 * 100;
+  foregroundToBackgroundVerticalRatio: number = (210 / 551) * 100;
+
   constructor(props: any) {
     super(props);
-    this.state = { width: 0, height: 0 };
+    this.state = {
+      width: 0,
+      height: 0,
+    };
     this._updateWindowDimensions = this._updateWindowDimensions.bind(this);
   }
 
@@ -36,34 +42,40 @@ export default class PersonalityAnimatedBackground extends Component<
         style={{
           width: this.state.width,
           height: this.state.height,
-          backgroundColor: "red",
-          position: "absolute",
+          backgroundColor: "#f0eef1",
+          position: "relative",
           overflow: "hidden",
         }}
       >
         <AtomicImage
-          src="./1431436876.png"
-          position_inferer={this.foreground_position_inferer}
-          style={{
-            position: "absolute",
-            height: 10,
-          }}
-        />
-        <AtomicImage
+          width={this.state.width}
+          height={this.state.height}
           src="./90497836_205798060836274_1081335742664220290_n.jpg"
           position_inferer={this.background_position_inferer}
           style={{
             position: "relative",
             height: this.state.height,
           }}
-        />
+        >
+          <AtomicImage
+            pwidth={this.state.width}
+            pheight={this.state.height}
+            src="./1431436876.png"
+            position_inferer={this.foreground_position_inferer}
+            style={{
+              position: "relative",
+              width: this.foregroundToBackgroundHorizontalRatio + "%",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          />
+        </AtomicImage>
       </div>
     );
   }
   foreground_position_inferer = (img_width: number, img_height: number) => {
     return {
-      left: 0,
-      top: 0,
+      top: this.foregroundToBackgroundVerticalRatio + "%",
     };
   };
 

@@ -19,7 +19,7 @@ export default class AtomicImage extends Component<any, AtomicImageState> {
     });
   }
   render() {
-    const { src, style, position_inferer } = this.props;
+    const { src, style, position_inferer, children } = this.props;
     const { width, height } = this.state.dimensions;
     const position_style: any = position_inferer(width, height);
     console.log(position_style);
@@ -33,6 +33,14 @@ export default class AtomicImage extends Component<any, AtomicImageState> {
             style.height != null ? { height: 100 + "%" } : { width: 100 + "%" }
           }
         />
+        <div
+          style={{
+            position: "relative",
+            ...position_style,
+          }}
+        >
+          {children}
+        </div>
       </div>
     );
   }
