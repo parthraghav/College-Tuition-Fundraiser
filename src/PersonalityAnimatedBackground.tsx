@@ -41,7 +41,6 @@ export default class PersonalityAnimatedBackground extends Component<
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
-    this.set_goggle_pos(GogglePos.Out);
   }
 
   componentWillUnmount() {
@@ -100,39 +99,33 @@ export default class PersonalityAnimatedBackground extends Component<
     return (
       <div
         style={{
-          width: "100vw",
-          height: "100vh",
-          //height: "-webkit-fill-available",
-          backgroundColor: "#f0eef1",
-          position: "relative",
+          position: "absolute",
+          left: this.state.backgroundLeftMargin + "px",
+          transition: "left 2s",
+          overflow: "hidden",
         }}
       >
-        <div
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media"
+          onLoad={() => this.set_background_pos(BackgroundPosition.HalfLeft)}
+          style={{
+            width: `${img_width}px`,
+            zIndex: 1,
+          }}
+        />
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
+          onLoad={() => this.set_goggle_pos(GogglePos.On)}
           style={{
             position: "absolute",
-            left: this.state.backgroundLeftMargin + "px",
+            width: this.foregroundToBackgroundHorizontalRatio + "%",
+            top: this.foregroundToBackgroundVerticalRatio + "%",
+            left: "50%",
+            transform: this.state.foregroundTransform,
+            zIndex: 2,
+            transition: "transform 2s",
           }}
-        >
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media"
-            onLoad={() => this.set_background_pos(BackgroundPosition.Center)}
-            style={{
-              width: `${img_width}px`,
-              zIndex: 1,
-            }}
-          />
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
-            style={{
-              position: "absolute",
-              width: this.foregroundToBackgroundHorizontalRatio + "%",
-              top: this.foregroundToBackgroundVerticalRatio + "%",
-              left: "50%",
-              transform: this.state.foregroundTransform,
-              zIndex: 2,
-            }}
-          />
-        </div>
+        />
       </div>
     );
   }
