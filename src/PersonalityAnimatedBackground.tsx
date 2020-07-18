@@ -18,8 +18,7 @@ interface PersonalityAnimatedBackgroundState {
   window_height: number;
   backgroundLeftMargin: number;
 }
-//0.32203389839
-//90497836_205798060836274_1081335742664220290_n
+
 export default class PersonalityAnimatedBackground extends Component<
   any,
   PersonalityAnimatedBackgroundState
@@ -52,7 +51,6 @@ export default class PersonalityAnimatedBackground extends Component<
   set_goggle_pos = (goggle_pos: GogglePos) => {};
 
   set_background_pos = (background_pos: BackgroundPosition) => {
-    console.log(background_pos == BackgroundPosition.Center);
     var backgroundLeftMargin;
     const img_width = this.state.window_height * (1080 / 564);
     const window_width = this.state.window_width;
@@ -65,7 +63,6 @@ export default class PersonalityAnimatedBackground extends Component<
         backgroundLeftMargin = (window_width - img_width) / 2;
         break;
     }
-    console.log(window_width, img_width, backgroundLeftMargin);
 
     this.setState({
       backgroundLeftMargin: backgroundLeftMargin,
@@ -119,36 +116,3 @@ export default class PersonalityAnimatedBackground extends Component<
     );
   }
 }
-//90497836_205798060836274_1081335742664220290_n.jpg
-//90497836_205798060836274_1081335742664220290_n.jpg
-
-/* 
-
-      <div
-        style={{
-          width: "100vw",
-        }}
-      >
-        <div style={{ position: "absolute", left: "-540px" }}>
-          <div
-            style={{
-              width: "auto",
-              height: "100vh",
-              backgroundColor: "#f0eef1",
-              position: "relative",
-              overflow: "hidden",
-              backgroundRepeat: "no-repeat",
-              backgroundImage:
-                "url('https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media')",
-            }}
-          >
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
-              style={{}}
-            />
-          </div>
-        </div>
-      </div>
-
-      
-*/
