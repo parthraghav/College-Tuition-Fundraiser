@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import AtomicImage from "./AtomicImage";
 
 interface PersonalityAnimatedBackgroundState {
-  width: number;
-  height: number;
+  window_width: number;
+  window_height: number;
 }
 //0.32203389839
 //90497836_205798060836274_1081335742664220290_n
@@ -16,78 +16,92 @@ export default class PersonalityAnimatedBackground extends Component<
 
   constructor(props: any) {
     super(props);
-    this.state = {
-      width: 0,
-      height: 0,
-    };
-    this._updateWindowDimensions = this._updateWindowDimensions.bind(this);
+    this.state = { window_width: 0, window_height: 0 };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
-    this._updateWindowDimensions();
-    window.addEventListener("resize", this._updateWindowDimensions);
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this._updateWindowDimensions);
+    window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
-  _updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  updateWindowDimensions() {
+    this.setState({
+      window_width: window.innerWidth,
+      window_height: window.innerHeight,
+    });
   }
 
   render() {
+    const img_width = this.state.window_height * (1080 / 564);
     return (
       <div
         style={{
-          width: this.state.width,
-          height: this.state.height,
+          width: "100vw",
+          height: "100vh",
+          //height: "-webkit-fill-available",
           backgroundColor: "#f0eef1",
           position: "relative",
-          overflow: "hidden",
         }}
       >
-        <AtomicImage
-          width={this.state.width}
-          height={this.state.height}
-          src="./90497836_205798060836274_1081335742664220290_n.jpg"
-          position_inferer={this.background_position_inferer}
-          style={{
-            position: "relative",
-            height: this.state.height,
-          }}
-        >
-          <AtomicImage
-            pwidth={this.state.width}
-            pheight={this.state.height}
-            src="./1431436876.png"
-            position_inferer={this.foreground_position_inferer}
+        <div style={{ position: "absolute", left: -img_width / 2 + "px" }}>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media"
             style={{
-              position: "relative",
-              width: this.foregroundToBackgroundHorizontalRatio + "%",
-              marginLeft: "auto",
-              marginRight: "auto",
+              width: `${img_width}px`,
+              zIndex: 1,
             }}
           />
-        </AtomicImage>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
+            style={{
+              position: "absolute",
+              width: this.foregroundToBackgroundHorizontalRatio + "%",
+              top: this.foregroundToBackgroundVerticalRatio + "%",
+              left: "50%",
+              transform: "translate(-50%, 0)",
+              zIndex: 2,
+            }}
+          />
+        </div>
       </div>
     );
   }
-  foreground_position_inferer = (img_width: number, img_height: number) => {
-    return {
-      top: this.foregroundToBackgroundVerticalRatio + "%",
-    };
-  };
-
-  background_position_inferer = (img_width: number, img_height: number) => {
-    var viewport_width = this.state.width;
-    var viewport_height = this.state.height;
-    console.log(img_width, viewport_width);
-    return {
-      left: -img_width / 2,
-      top: 0,
-    };
-  };
 }
 //90497836_205798060836274_1081335742664220290_n.jpg
 //90497836_205798060836274_1081335742664220290_n.jpg
+
+/* 
+
+      <div
+        style={{
+          width: "100vw",
+        }}
+      >
+        <div style={{ position: "absolute", left: "-540px" }}>
+          <div
+            style={{
+              width: "auto",
+              height: "100vh",
+              backgroundColor: "#f0eef1",
+              position: "relative",
+              overflow: "hidden",
+              backgroundRepeat: "no-repeat",
+              backgroundImage:
+                "url('https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media')",
+            }}
+          >
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
+              style={{}}
+            />
+          </div>
+        </div>
+      </div>
+
+      
+*/
