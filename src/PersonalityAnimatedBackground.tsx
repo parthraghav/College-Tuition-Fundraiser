@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 import AtomicImage from "./AtomicImage";
 
+enum GogglePos {
+  Out,
+  On,
+  Down,
+  Up,
+}
+
+enum BackgroundPosition {
+  HalfLeft,
+  Center,
+}
+
 interface PersonalityAnimatedBackgroundState {
   window_width: number;
   window_height: number;
+  backgroundLeftMargin: number;
 }
 //0.32203389839
 //90497836_205798060836274_1081335742664220290_n
@@ -16,7 +29,7 @@ export default class PersonalityAnimatedBackground extends Component<
 
   constructor(props: any) {
     super(props);
-    this.state = { window_width: 0, window_height: 0 };
+    this.state = { window_width: 0, window_height: 0, backgroundLeftMargin: 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -36,6 +49,34 @@ export default class PersonalityAnimatedBackground extends Component<
     });
   }
 
+  set_goggle_pos = (goggle_pos: GogglePos) => {};
+
+  set_background_pos = (background_pos: BackgroundPosition) => {
+    console.log(background_pos == BackgroundPosition.Center);
+    var backgroundLeftMargin;
+    const img_width = this.state.window_height * (1080 / 564);
+    const window_width = this.state.window_width;
+
+    switch (background_pos) {
+      case BackgroundPosition.HalfLeft:
+        backgroundLeftMargin = -img_width / 2;
+        break;
+      case BackgroundPosition.Center:
+        backgroundLeftMargin = (window_width - img_width) / 2;
+        break;
+    }
+    console.log(window_width, img_width, backgroundLeftMargin);
+
+    this.setState({
+      backgroundLeftMargin: backgroundLeftMargin,
+    });
+  };
+
+  map_goggle_state_to_pos = () => {
+    //(this.state.window_width - img_width) / 2
+    //-img_width / 2
+  };
+
   render() {
     const img_width = this.state.window_height * (1080 / 564);
     return (
@@ -48,9 +89,15 @@ export default class PersonalityAnimatedBackground extends Component<
           position: "relative",
         }}
       >
-        <div style={{ position: "absolute", left: -img_width / 2 + "px" }}>
+        <div
+          style={{
+            position: "absolute",
+            left: this.state.backgroundLeftMargin + "px",
+          }}
+        >
           <img
             src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media"
+            onLoad={() => this.set_background_pos(BackgroundPosition.Center)}
             style={{
               width: `${img_width}px`,
               zIndex: 1,
@@ -63,7 +110,7 @@ export default class PersonalityAnimatedBackground extends Component<
               width: this.foregroundToBackgroundHorizontalRatio + "%",
               top: this.foregroundToBackgroundVerticalRatio + "%",
               left: "50%",
-              transform: "translate(-50%, 0)",
+              transform: "translate(-50%, 20%)",
               zIndex: 2,
             }}
           />
