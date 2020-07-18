@@ -110,7 +110,6 @@ export default class PersonalityAnimatedBackground extends Component<
           onLoad={() => this.set_background_pos(BackgroundPosition.HalfLeft)}
           style={{
             width: `${img_width}px`,
-            zIndex: 1,
           }}
         />
         <img
@@ -122,7 +121,6 @@ export default class PersonalityAnimatedBackground extends Component<
             top: this.foregroundToBackgroundVerticalRatio + "%",
             left: "50%",
             transform: this.state.foregroundTransform,
-            zIndex: 2,
             transition: "transform 2s",
           }}
         />

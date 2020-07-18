@@ -3,6 +3,7 @@ import PersonalityAnimatedBackground from "./PersonalityAnimatedBackground";
 import logo from "./logo.svg";
 import "./App.css";
 import IntroStickyBanner from "./IntroStickyBanner";
+import InvisibleScroll from "./InvisibleScroll";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       }}
     >
       <PersonalityAnimatedBackground />
+      <InvisibleScroll />
       <IntroStickyBanner />
     </div>
   );
