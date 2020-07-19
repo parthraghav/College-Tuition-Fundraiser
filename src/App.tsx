@@ -5,6 +5,7 @@ import "./App.css";
 import IntroStickyBanner from "./IntroStickyBanner";
 import InvisibleScroll, { ScrollDirection } from "./InvisibleScroll";
 import IntroText from "./IntroText";
+import FundScreen from "./FundScreen";
 
 function App() {
   const [isIntroStickyBannerHidden, setIsIntroStickyBannerHidden] = useState(
@@ -79,6 +80,7 @@ function App() {
         }}
       />
       <IntroStickyBanner hidden={isIntroStickyBannerHidden} />
+      <FundScreen />
     </div>
   );
 }
