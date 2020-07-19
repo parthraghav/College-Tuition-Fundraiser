@@ -3,7 +3,7 @@ import PersonalityAnimatedBackground from "./PersonalityAnimatedBackground";
 import logo from "./logo.svg";
 import "./App.css";
 import IntroStickyBanner from "./IntroStickyBanner";
-import InvisibleScroll from "./InvisibleScroll";
+import InvisibleScroll, { ScrollDirection } from "./InvisibleScroll";
 
 function App() {
   const [isIntroStickyBannerHidden, setIsIntroStickyBannerHidden] = useState(
@@ -24,8 +24,11 @@ function App() {
       <PersonalityAnimatedBackground />
       <InvisibleScroll
         threshmap={{
-          20: (isApproaching: boolean) => {
-            setIsIntroStickyBannerHidden(!isApproaching);
+          20: (scroll_direction: ScrollDirection) => {
+            console.log("i was called", scroll_direction);
+            setIsIntroStickyBannerHidden(
+              scroll_direction == ScrollDirection.Positive
+            );
           },
         }}
       />
