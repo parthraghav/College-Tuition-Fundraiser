@@ -17,7 +17,7 @@ export default class InvisibleScroll extends Component<
 
   handleScroll = (e: any) => {
     let element = e.target;
-    if (element.clientHeight == 0) {
+    if (element.clientHeight === 0) {
       return;
     }
     let scrollPercentage =
