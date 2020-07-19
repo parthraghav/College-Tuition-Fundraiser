@@ -44,7 +44,6 @@ function App() {
           },
           60: (scroll_direction: ScrollDirection) => {
             let isScrollingDown = scroll_direction == ScrollDirection.Positive;
-            console.log("should be up");
             setSlideNum(isScrollingDown ? 6 : 5);
           },
           70: (scroll_direction: ScrollDirection) => {
