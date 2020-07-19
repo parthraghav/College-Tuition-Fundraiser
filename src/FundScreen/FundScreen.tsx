@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ProgressVizGraphic from "./ProgressVizGraphic";
+import CashTextBox from "./CashTextBox";
 
 interface FundScreenState {}
 
@@ -25,20 +27,21 @@ export default class FundScreen extends Component<any, FundScreenState> {
       >
         <div
           style={{
-            height: "21vh",
-            backgroundColor: "red",
+            height: "20vh",
           }}
-        ></div>
+        >
+          <ProgressVizGraphic />
+        </div>
         <div
           style={{
-            height: "10vh",
-            backgroundColor: "yellow",
+            height: "20vh",
           }}
-        ></div>
+        >
+          <CashTextBox />
+        </div>
         <div
           style={{
             height: "24vh",
-            backgroundColor: "green",
           }}
         ></div>
         <div
