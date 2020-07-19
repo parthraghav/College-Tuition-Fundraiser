@@ -54,7 +54,46 @@ export default class PersonalityAnimatedBackground extends Component<
     });
   }
 
-  set_goggle_pos = (goggle_pos: GogglePos) => {
+  get_slide_details = (slideNum: number) => {
+    let currentBackgroundPos, currentGogglePos;
+    switch (slideNum) {
+      case 1:
+        currentBackgroundPos = BackgroundPosition.HalfLeft;
+        currentGogglePos = GogglePos.On;
+        break;
+      case 2:
+        currentBackgroundPos = BackgroundPosition.Center;
+        currentGogglePos = GogglePos.Out;
+        break;
+      case 3:
+        currentBackgroundPos = BackgroundPosition.Center;
+        currentGogglePos = GogglePos.Out;
+        break;
+      case 4:
+        currentBackgroundPos = BackgroundPosition.Center;
+        currentGogglePos = GogglePos.Down;
+        break;
+      case 5:
+        currentBackgroundPos = BackgroundPosition.Center;
+        currentGogglePos = GogglePos.On;
+        break;
+      case 6:
+        currentBackgroundPos = BackgroundPosition.Center;
+        currentGogglePos = GogglePos.Up;
+        break;
+      case 7:
+        currentBackgroundPos = BackgroundPosition.Center;
+        currentGogglePos = GogglePos.Out;
+        break;
+      default:
+        currentBackgroundPos = BackgroundPosition.Center;
+        currentGogglePos = GogglePos.On;
+        break;
+    }
+    return { currentBackgroundPos, currentGogglePos };
+  };
+
+  get_foreground_transform = (goggle_pos: GogglePos) => {
     var foregroundTransform;
     switch (goggle_pos) {
       case GogglePos.Out:
@@ -70,12 +109,13 @@ export default class PersonalityAnimatedBackground extends Component<
         foregroundTransform = "translate(-50%, -140%) scale(1,-1)";
         break;
     }
-    this.setState({
-      foregroundTransform,
-    });
+    // this.setState({
+    //   foregroundTransform,
+    // });
+    return foregroundTransform;
   };
 
-  set_background_pos = (background_pos: BackgroundPosition) => {
+  get_background_left_margin = (background_pos: BackgroundPosition) => {
     var backgroundLeftMargin;
     const img_width = this.state.window_height * (1080 / 564);
     const window_width = this.state.window_width;
@@ -89,38 +129,47 @@ export default class PersonalityAnimatedBackground extends Component<
         break;
     }
 
-    this.setState({
-      backgroundLeftMargin,
-    });
+    // this.setState({
+    //   backgroundLeftMargin,
+    // });
+    return backgroundLeftMargin;
   };
 
   render() {
     const img_width = this.state.window_height * (1080 / 564);
+    const { currentBackgroundPos, currentGogglePos } = this.get_slide_details(
+      this.props.slideNum
+    );
+    const backgroundLeftMargin = this.get_background_left_margin(
+      currentBackgroundPos
+    );
+    const foregroundTransform = this.get_foreground_transform(currentGogglePos);
+
     return (
       <div
         style={{
           position: "absolute",
-          left: this.state.backgroundLeftMargin + "px",
+          left: backgroundLeftMargin + "px",
           transition: "left 2s",
           overflow: "hidden",
         }}
       >
         <img
           src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media"
-          onLoad={() => this.set_background_pos(BackgroundPosition.HalfLeft)}
+          //onLoad={() => this.set_background_pos(BackgroundPosition.HalfLeft)}
           style={{
             width: `${img_width}px`,
           }}
         />
         <img
           src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
-          onLoad={() => this.set_goggle_pos(GogglePos.On)}
+          //onLoad={() => this.set_goggle_pos(GogglePos.On)}
           style={{
             position: "absolute",
             width: this.foregroundToBackgroundHorizontalRatio + "%",
             top: this.foregroundToBackgroundVerticalRatio + "%",
             left: "50%",
-            transform: this.state.foregroundTransform,
+            transform: foregroundTransform,
             transition: "transform 2s",
           }}
         />

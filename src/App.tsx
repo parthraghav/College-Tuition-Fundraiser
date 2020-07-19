@@ -9,6 +9,7 @@ function App() {
   const [isIntroStickyBannerHidden, setIsIntroStickyBannerHidden] = useState(
     false
   );
+  const [slideNum, setSlideNum] = useState(1);
 
   return (
     <div
@@ -21,14 +22,34 @@ function App() {
         overflow: "hidden",
       }}
     >
-      <PersonalityAnimatedBackground />
+      <PersonalityAnimatedBackground slideNum={slideNum} />
       <InvisibleScroll
         threshmap={{
           20: (scroll_direction: ScrollDirection) => {
-            console.log("i was called", scroll_direction);
-            setIsIntroStickyBannerHidden(
-              scroll_direction == ScrollDirection.Positive
-            );
+            let isScrollingDown = scroll_direction == ScrollDirection.Positive;
+            setIsIntroStickyBannerHidden(isScrollingDown);
+            setSlideNum(isScrollingDown ? 2 : 1);
+          },
+          30: (scroll_direction: ScrollDirection) => {
+            let isScrollingDown = scroll_direction == ScrollDirection.Positive;
+            setSlideNum(isScrollingDown ? 3 : 2);
+          },
+          40: (scroll_direction: ScrollDirection) => {
+            let isScrollingDown = scroll_direction == ScrollDirection.Positive;
+            setSlideNum(isScrollingDown ? 4 : 3);
+          },
+          50: (scroll_direction: ScrollDirection) => {
+            let isScrollingDown = scroll_direction == ScrollDirection.Positive;
+            setSlideNum(isScrollingDown ? 5 : 4);
+          },
+          60: (scroll_direction: ScrollDirection) => {
+            let isScrollingDown = scroll_direction == ScrollDirection.Positive;
+            console.log("should be up");
+            setSlideNum(isScrollingDown ? 6 : 5);
+          },
+          70: (scroll_direction: ScrollDirection) => {
+            let isScrollingDown = scroll_direction == ScrollDirection.Positive;
+            setSlideNum(isScrollingDown ? 7 : 6);
           },
         }}
       />

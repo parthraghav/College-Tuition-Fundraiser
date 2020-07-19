@@ -67,7 +67,7 @@ export default class InvisibleScroll extends Component<
         <div
           style={{
             position: "absolute",
-            height: "500vh",
+            height: "1000vh",
             width: "100vw",
           }}
         ></div>
