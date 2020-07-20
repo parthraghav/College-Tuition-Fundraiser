@@ -1,8 +1,24 @@
 import React, { Component } from "react";
 import ProgressVizGraphic from "./ProgressVizGraphic";
 import CashTextBox from "./CashTextBox";
+import QuickPaySelector from "./QuickPaySelector";
+import DonorList from "./DonorList";
+import SocialShareBanner from "./SocialShareBanner";
 
 interface FundScreenState {}
+
+const DonorData = [
+  { name: "Shagun Panwar", amount: 500 },
+  { name: "Lakshya Singh", amount: 200 },
+  { name: "Brian Zilles", amount: 150 },
+  { name: "Dazzle Raghav", amount: 300 },
+  { name: "Guru Sachdeva", amount: 400 },
+  { name: "Josh Daveson", amount: 550 },
+  { name: "Anonymous", amount: 420 },
+  { name: "Kyle Kirkland", amount: 140 },
+  { name: "Anubhavi", amount: 20 },
+  { name: "Anjali Reddy", amount: 700 },
+];
 
 export default class FundScreen extends Component<any, FundScreenState> {
   constructor(props: any) {
@@ -23,6 +39,7 @@ export default class FundScreen extends Component<any, FundScreenState> {
           backgroundRepeat: "no-repeat",
           display: "flex",
           flexDirection: "column",
+          overflow: "scroll",
         }}
       >
         <div
@@ -43,14 +60,21 @@ export default class FundScreen extends Component<any, FundScreenState> {
           style={{
             height: "24vh",
           }}
-        ></div>
+        >
+          <QuickPaySelector />
+        </div>
         <div
-          style={{
-            height: "20vh",
-            backgroundColor: "violet",
-          }}
-        ></div>
-        <p>Hello World!</p>
+          style={
+            {
+              // height: "20vh",
+              // backgroundColor: "violet",
+            }
+          }
+        >
+          <DonorList donorData={DonorData} />
+        </div>
+
+        <SocialShareBanner />
       </div>
     );
   }
