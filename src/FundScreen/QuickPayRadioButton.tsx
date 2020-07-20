@@ -25,6 +25,7 @@ export default function QuickPayRadioButton(props: any) {
         gridTemplateColumns: "1fr 1fr",
         margin: "4px 4px",
         cursor: "pointer",
+        userSelect: "none",
       }}
     >
       <span style={{ fontSize: "2em" }}>{props.emoji}</span>

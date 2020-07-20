@@ -54,6 +54,7 @@ export default function CashTextBox(props: any) {
             color: "#4B89F6",
             fontWeight: 500,
             textDecoration: "none",
+            userSelect: "none",
           }}
         >
           Invest

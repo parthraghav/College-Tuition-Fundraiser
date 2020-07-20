@@ -68,6 +68,7 @@ export default class SocialShareBanner extends Component<
           transition: "bottom 1s",
           backgroundColor: "#F4F1EF",
           borderTop: "1px solid #CECECE",
+          userSelect: "none",
         }}
       >
         <div style={{ display: "flex", flex: 0, height: "100%" }}>

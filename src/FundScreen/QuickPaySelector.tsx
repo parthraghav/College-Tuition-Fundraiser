@@ -30,6 +30,7 @@ export default function QuickPaySelector(props: any) {
         margin: "0px auto",
         overflowX: "scroll",
         whiteSpace: "nowrap",
+        userSelect: "none",
       }}
     >
       {quickPayOptions.map(({ emoji, amount }, index) => [

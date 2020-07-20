@@ -54,6 +54,7 @@ export default function ProgressVizGraphic(props: any) {
         margin: "auto",
         display: "grid",
         placeItems: "end",
+        userSelect: "none",
       }}
     >
       <div style={{ width: "100%", transform: "translate(0,1em)" }}>
