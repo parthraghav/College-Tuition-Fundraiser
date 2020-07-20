@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 export default function CashTextBox(props: any) {
+  const [currentValue, setCurrentValue] = useState(props.valueAmount);
+  function handleValueChange(evt: any) {
+    console.log("i was called");
+    setCurrentValue(evt.target.value);
+  }
   return (
     <div
       style={{
@@ -23,6 +28,8 @@ export default function CashTextBox(props: any) {
         <input
           className="defocused"
           placeholder="$10"
+          type="number"
+          value={props.valueAmount}
           style={{
             width: "100%",
             height: "100%",
