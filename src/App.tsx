@@ -80,7 +80,7 @@ function App() {
         }}
       />
       <IntroStickyBanner hidden={isIntroStickyBannerHidden} />
-      <FundScreen />
+      {/* <FundScreen /> */}
     </div>
   );
 }
