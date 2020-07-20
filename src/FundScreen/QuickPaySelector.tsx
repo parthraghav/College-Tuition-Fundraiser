@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import QuickPayRadioButton from "./QuickPayRadioButton";
 
+const quickPayOptions = [
+  { emoji: "🌭", amount: 5 },
+  { emoji: "☕", amount: 7.5 },
+  { emoji: "🍺", amount: 10 },
+  { emoji: "🍿", amount: 15 },
+  { emoji: "🍰", amount: 20 },
+  { emoji: "🤖", amount: 50 },
+  { emoji: "🎄", amount: 100 },
+  { emoji: "🦄", amount: 200 },
+  { emoji: "👁", amount: 500 },
+  { emoji: "🙏", amount: 750 },
+];
+
 export default function QuickPaySelector(props: any) {
+  const [focusedIndex, setFocusedIndex] = useState(2);
+  let prevValueAmount, currValueAmout;
+  function handleRadioClick(index: number) {
+    setFocusedIndex(index);
+    props.onValueChange(quickPayOptions[index].amount);
+  }
   return (
     <div
       style={{
@@ -13,18 +32,17 @@ export default function QuickPaySelector(props: any) {
         whiteSpace: "nowrap",
       }}
     >
-      <QuickPayRadioButton emoji="🌭" label="$5" focused={true} />
-      <QuickPayRadioButton emoji="☕" label="$57.5" focused={false} />
-      <QuickPayRadioButton emoji="🍺" label="$10" focused={false} />
-      <br />
-      <QuickPayRadioButton emoji="🍿" label="$15" focused={false} />
-      <QuickPayRadioButton emoji="🍰" label="$20" focused={false} />
-      <QuickPayRadioButton emoji="🤖" label="$50" focused={false} />
-      <QuickPayRadioButton emoji="🎄" label="$100" focused={false} />
-      <br />
-      <QuickPayRadioButton emoji="🦄" label="$200" focused={false} />
-      <QuickPayRadioButton emoji="👁" label="$500" focused={false} />
-      <QuickPayRadioButton emoji="🙏" label="$500" focused={false} />
+      {quickPayOptions.map(({ emoji, amount }, index) => [
+        <QuickPayRadioButton
+          emoji={emoji}
+          amount={amount}
+          index={index}
+          key={index}
+          focused={focusedIndex == index}
+          onClick={handleRadioClick}
+        />,
+        (index == 2 || index == 6) && <br key={-1 * index} />,
+      ])}
     </div>
   );
 }

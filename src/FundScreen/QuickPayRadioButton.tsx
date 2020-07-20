@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import "./styles.css";
 
 export default function QuickPayRadioButton(props: any) {
+  const [isSelected, setIsSelected] = useState(props.focused);
+
   return (
     <div
-      onClick={() => console.log("clicked")}
+      onClick={() => props.onClick(props.index)}
+      className="quickPayRadioButton"
       style={{
         background: props.focused
           ? "linear-gradient(0deg,#00AC17,#4BC25C)"
           : "linear-gradient(0deg,#4B89F6,#2E7AFF)",
+        transform: props.focused ? "scale(0.9,0.9)" : "scale(1,1)",
+        transition: "transform 0.2s",
         padding: "0px 10px",
         borderRadius: 50,
         textAlign: "center",
@@ -18,11 +24,12 @@ export default function QuickPayRadioButton(props: any) {
         placeItems: "center",
         gridTemplateColumns: "1fr 1fr",
         margin: "4px 4px",
+        cursor: "pointer",
       }}
     >
       <span style={{ fontSize: "2em" }}>{props.emoji}</span>
       <span style={{ color: "#FFFFFF", fontSize: "1.1em", fontWeight: 500 }}>
-        {props.label}
+        {`$${props.amount}`}
       </span>
     </div>
   );
