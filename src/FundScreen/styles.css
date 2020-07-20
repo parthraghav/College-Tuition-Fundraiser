@@ -59,3 +59,7 @@
   text-align: justify;
   border-bottom: 1px solid black;
 }
+
+.quickPayRadioButton:active {
+  background: linear-gradient(0deg, #00ac17, #4bc25c);
+}

@@ -34,7 +34,7 @@ export default class FundScreen extends Component<any, FundScreenState> {
           height: "100%",
           width: "100%",
           background:
-            "url(https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F99694392183429944_43522157_2421.png?alt=media)",
+            "url(https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F99694392183429944_43522157_2421-min.png?alt=media)",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           display: "flex",
@@ -45,6 +45,7 @@ export default class FundScreen extends Component<any, FundScreenState> {
         <div
           style={{
             height: "20vh",
+            minHeight: "128px",
           }}
         >
           <ProgressVizGraphic />
@@ -52,6 +53,7 @@ export default class FundScreen extends Component<any, FundScreenState> {
         <div
           style={{
             height: "20vh",
+            minHeight: "128px",
           }}
         >
           <CashTextBox />
@@ -59,6 +61,7 @@ export default class FundScreen extends Component<any, FundScreenState> {
         <div
           style={{
             height: "24vh",
+            minHeight: "150px",
           }}
         >
           <QuickPaySelector />

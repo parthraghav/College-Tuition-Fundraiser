@@ -57,6 +57,7 @@ export default class SocialShareBanner extends Component<
         style={{
           position: "fixed",
           height: "16%",
+          minHeight: "100px",
           bottom: this.props.hidden ? "-16%" : 0,
           padding: "0em 1em",
           left: 0,
@@ -66,6 +67,7 @@ export default class SocialShareBanner extends Component<
           backgroundSize: "cover",
           transition: "bottom 1s",
           backgroundColor: "#F4F1EF",
+          borderTop: "1px solid #CECECE",
         }}
       >
         <div style={{ display: "flex", flex: 0, height: "100%" }}>
@@ -94,8 +96,8 @@ export default class SocialShareBanner extends Component<
               alignItems: "center",
             }}
           >
-            {SocialIconUrls.map((icon) => (
-              <SocialIcon url={icon.url} name={icon.name} />
+            {SocialIconUrls.map((icon, index) => (
+              <SocialIcon url={icon.url} name={icon.name} key={index} />
             ))}
           </div>
         </div>

@@ -19,14 +19,17 @@ const colors = [
 
 const RandColors = colors.sort((a: any, b: any) => 0.5 - Math.random());
 
-function DonorEntry(name: string, amount: number, color: string) {
+function DonorEntry(props: any) {
+  let name = props.name;
+  let amount = props.amount;
+  let color = props.color;
   if (name.replace(/\s/g, "") == "") {
-    return;
+    throw new Error("donot entry, invalid name");
   }
   let shortform;
   shortform = name
     .split(" ")
-    .map((el) => el[0])
+    .map((el: any) => el[0])
     .join("");
   if (shortform.length == 1) {
     shortform += shortform;
@@ -87,9 +90,14 @@ export default function DonorList(props: any) {
           <div className="table-header-cell">Header 5</div>
         </div> */}
           <div className="resp-table-body">
-            {sortedDonorList.map(({ name, amount }: any, index: number) =>
-              DonorEntry(name, amount, RandColors[index % RandColors.length])
-            )}
+            {sortedDonorList.map(({ name, amount }: any, index: number) => (
+              <DonorEntry
+                key={index}
+                name={name}
+                amount={amount}
+                color={RandColors[index % RandColors.length]}
+              />
+            ))}
           </div>
           {/* <div className="resp-table-footer">
           <div className="table-footer-cell">Footer 1</div>

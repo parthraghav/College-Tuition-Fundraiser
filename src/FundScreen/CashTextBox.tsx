@@ -34,6 +34,7 @@ export default function CashTextBox(props: any) {
             background: "linear-gradient(0deg, #EFEFEF, #FFFFFF)",
             boxSizing: "border-box",
             paddingLeft: "1.5em",
+            caretColor: "#3e82fa",
           }}
         />
         <a
