@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AtomicImage from "./AtomicImage";
+import IntroStickyBanner from "../IntroStickyBanner";
 
 enum GogglePos {
   Out,
@@ -135,6 +136,17 @@ export default class PersonalityAnimatedBackground extends Component<
     return backgroundLeftMargin;
   };
 
+  handleScroll(e: any) {
+    let element = e.target;
+    if (element.clientHeight === 0) {
+      return;
+    }
+    let currentScrollPos = element.clientHeight + element.scrollTop;
+    console.log(currentScrollPos);
+  }
+
+  activation_table = {};
+
   render() {
     const img_width = this.state.window_height * (1080 / 564);
     const { currentBackgroundPos, currentGogglePos } = this.get_slide_details(
@@ -147,32 +159,38 @@ export default class PersonalityAnimatedBackground extends Component<
 
     return (
       <div
-        style={{
-          position: "absolute",
-          left: backgroundLeftMargin + "px",
-          transition: "left 2s",
-          overflow: "hidden",
-        }}
+        style={{ background: "gray", height: "200vh" }}
+        onScroll={this.handleScroll}
       >
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media"
-          //onLoad={() => this.set_background_pos(BackgroundPosition.HalfLeft)}
-          style={{
-            width: `${img_width}px`,
-          }}
-        />
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
-          //onLoad={() => this.set_goggle_pos(GogglePos.On)}
+        <div
           style={{
             position: "absolute",
-            width: this.foregroundToBackgroundHorizontalRatio + "%",
-            top: this.foregroundToBackgroundVerticalRatio + "%",
-            left: "50%",
-            transform: foregroundTransform,
-            transition: "transform 2s",
+            left: backgroundLeftMargin + "px",
+            transition: "left 2s",
+            overflow: "hidden",
           }}
-        />
+        >
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F90497836_205798060836274_1081335742664220290_n.jpg?alt=media"
+            //onLoad={() => this.set_background_pos(BackgroundPosition.HalfLeft)}
+            style={{
+              width: `${img_width}px`,
+            }}
+          />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media"
+            //onLoad={() => this.set_goggle_pos(GogglePos.On)}
+            style={{
+              position: "absolute",
+              width: this.foregroundToBackgroundHorizontalRatio + "%",
+              top: this.foregroundToBackgroundVerticalRatio + "%",
+              left: "50%",
+              transform: foregroundTransform,
+              transition: "transform 2s",
+            }}
+          />
+        </div>
+        <IntroStickyBanner hidden={false} />
       </div>
     );
   }
