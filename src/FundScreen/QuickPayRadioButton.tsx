@@ -26,6 +26,8 @@ export default function QuickPayRadioButton(props: any) {
         margin: "4px 4px",
         cursor: "pointer",
         userSelect: "none",
+        WebkitTapHighlightColor: "rgba(255, 0, 0, 0)",
+        outline: "none",
       }}
     >
       <span style={{ fontSize: "2em" }}>{props.emoji}</span>
