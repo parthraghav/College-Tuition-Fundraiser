@@ -179,7 +179,6 @@ export default class IntroScreen extends Component<any, IntroScreenState> {
                 }}
               />
             </div>
-            <IntroStickyBanner hidden={false} />
           </div>
         )}
       </ScrollConsumer>

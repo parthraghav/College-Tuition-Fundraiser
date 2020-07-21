@@ -3,7 +3,6 @@ import ProgressVizGraphic from "./ProgressVizGraphic";
 import CashTextBox from "./CashTextBox";
 import QuickPaySelector from "./QuickPaySelector";
 import DonorList from "./DonorList";
-import SocialShareBanner from "./SocialShareBanner";
 
 interface FundScreenState {}
 
@@ -77,8 +76,6 @@ export default function FundScreen() {
       >
         <DonorList donorData={DonorData} />
       </div>
-
-      <SocialShareBanner />
     </div>
   );
 }

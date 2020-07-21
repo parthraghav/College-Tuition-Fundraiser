@@ -3,6 +3,7 @@ import PersonalityAnimatedBackground from "./IntroScreen/PersonalityAnimatedBack
 import logo from "./logo.svg";
 import "./App.css";
 import IntroStickyBanner from "./IntroStickyBanner";
+import SocialShareBanner from "./SocialShareBanner";
 import InvisibleScroll, { ScrollDirection } from "./InvisibleScroll";
 import IntroText from "./IntroText";
 import FundScreen from "./FundScreen/FundScreen";
@@ -29,6 +30,8 @@ const App = () => {
       >
         <IntroScreen />
         <FundScreen />
+        <IntroStickyBanner hidden={false} />
+        <SocialShareBanner />
       </div>
     </ScrollProvider>
   );
