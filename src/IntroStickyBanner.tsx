@@ -47,7 +47,7 @@ export default class IntroStickyBanner extends Component<
     return (
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           width: "100%",
           height: "20%",
           bottom: this.props.hidden ? "-20%" : 0,

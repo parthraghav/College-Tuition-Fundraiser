@@ -1,0 +1,8 @@
+.intro-screen-container {
+  position: absolute;
+  background: black;
+  transition: left 2s;
+  /* overflow: hidden;
+  touch-action: none;
+  scroll-behavior: unset; */
+}
