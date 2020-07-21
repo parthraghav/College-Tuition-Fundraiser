@@ -10,7 +10,6 @@ enum ScrollDirection {
   Negative, // Going up
   Positive, // Going down
 }
-
 export default class InvisibleScroll extends Component<
   any,
   InvisibleScrollState

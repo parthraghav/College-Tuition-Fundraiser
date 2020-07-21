@@ -1,12 +1,40 @@
-import React, { useState } from "react";
-import PersonalityAnimatedBackground from "./PersonalityAnimatedBackground";
+import React, { useState, createRef } from "react";
+import PersonalityAnimatedBackground from "./IntroScreen/PersonalityAnimatedBackground";
 import logo from "./logo.svg";
 import "./App.css";
 import IntroStickyBanner from "./IntroStickyBanner";
 import InvisibleScroll, { ScrollDirection } from "./InvisibleScroll";
 import IntroText from "./IntroText";
 import FundScreen from "./FundScreen/FundScreen";
+import { Controller, Scene } from "react-scrollmagic";
+import { Tween, Timeline } from "react-gsap";
+import IntroScreen from "./IntroScreen/IntroScreen";
+import { ScrollProvider } from "./ScrollContext";
 
+const App = () => {
+  let appRef = createRef<HTMLDivElement>();
+  console.log(appRef);
+  return (
+    <ScrollProvider scrollContainer={appRef}>
+      <div
+        ref={appRef}
+        style={{
+          width: "100vw",
+          height: "100vh",
+          //height: "-webkit-fill-available",
+          backgroundColor: "#f0eef1",
+          position: "relative",
+          overflow: "scroll",
+        }}
+      >
+        <IntroScreen />
+        <FundScreen />
+      </div>
+    </ScrollProvider>
+  );
+};
+
+/*
 function App() {
   const [isIntroStickyBannerHidden, setIsIntroStickyBannerHidden] = useState(
     false
@@ -80,9 +108,10 @@ function App() {
         }}
       />
       <IntroStickyBanner hidden={isIntroStickyBannerHidden} />
-      {/* <FundScreen /> */}
+      <FundScreen />
     </div>
   );
 }
+*/
 
 export default App;
