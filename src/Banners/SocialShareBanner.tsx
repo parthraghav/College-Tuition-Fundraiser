@@ -7,6 +7,7 @@ import {
 } from "react-share";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { TimelineLite, TweenMax, Power3 } from "gsap";
+import { isMobile } from "react-device-detect";
 
 const SHAREABLE_LINK = "http://fund.parthraghav.com/";
 
@@ -191,6 +192,8 @@ export default class SocialShareBanner extends Component<
     return (
       <div
         style={{
+          fontSize: isMobile ? "0.9em" : "1em",
+          lineHeight: isMobile ? "1.15em" : "inherit",
           position: "fixed",
           height: "16%",
           minHeight: "100px",

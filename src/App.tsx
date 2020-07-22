@@ -44,8 +44,8 @@ const App = () => {
           <FundScreen />
         </ScrollElement>
 
-        <IntroStickyBanner hidden={false} />
-        {/* <SocialShareBanner /> */}
+        <IntroStickyBanner hidden={true} />
+        <SocialShareBanner />
       </div>
     </ScrollProvider>
   );
