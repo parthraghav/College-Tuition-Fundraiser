@@ -38,51 +38,61 @@ const ScrollProvider = ({
   const [scrollYValue, setScrollYValue] = useState(0);
 
   // handle scroll
-  const onScroll = throttle((scrollContainer: any) => {
-    // `scrollX` for `window`, `scrollLeft` for an element
-    const scrollContainerX =
-      typeof scrollContainer.scrollX === "undefined"
-        ? scrollContainer.scrollLeft
-        : scrollContainer.scrollX;
+  const onScroll = (scrollContainer: any) =>
+    throttle(
+      ((scrollContainer: any) => {
+        // `scrollX` for `window`, `scrollLeft` for an element
+        console.log(1, scrollContainer);
+        // console.log(1.5, this);
+        const scrollContainerX =
+          typeof scrollContainer.scrollX === "undefined"
+            ? scrollContainer.scrollLeft
+            : scrollContainer.scrollX;
 
-    // `scrollY` for `window`, `scrollTop` for an element
-    const scrollContainerY =
-      typeof scrollContainer.scrollY === "undefined"
-        ? scrollContainer.scrollTop
-        : scrollContainer.scrollY;
+        // `scrollY` for `window`, `scrollTop` for an element
+        const scrollContainerY =
+          typeof scrollContainer.scrollY === "undefined"
+            ? scrollContainer.scrollTop
+            : scrollContainer.scrollY;
 
-    // if scroll has changed
-    if (
-      scrollContainerX !== scrollX.current ||
-      scrollContainerY !== scrollY.current
-    ) {
-      isScrollingDown.current = scrollContainerY > scrollY.current;
-      scrollX.current = scrollContainerX;
-      scrollY.current = scrollContainerY;
+        // if scroll has changed
+        if (
+          scrollContainerX !== scrollX.current ||
+          scrollContainerY !== scrollY.current
+        ) {
+          isScrollingDown.current = scrollContainerY > scrollY.current;
+          scrollX.current = scrollContainerX;
+          scrollY.current = scrollContainerY;
 
-      // trigger re-render
-      setIsScrollingDownValue(isScrollingDown.current);
-      setScrollXValue(scrollX.current);
-      setScrollYValue(scrollY.current);
-    }
-  }, throttleTime);
+          // trigger re-render
+          setIsScrollingDownValue(isScrollingDown.current);
+          setScrollXValue(scrollX.current);
+          setScrollYValue(scrollY.current);
+        }
+      }).bind(scrollContainer),
+      throttleTime
+    );
 
+  console.log(onScroll);
   // by passing an empty array as the second argument for `useEffect` we are
   // imitating `componentDidMount` lifecycle method.
   useEffect(() => {
-    if (typeof scrollContainerRef === "undefined") {
-      return;
-    }
+    console.log(scrollContainerRef);
+    if (typeof scrollContainerRef === "undefined") return;
+
     const scrollContainer = scrollContainerRef.current;
-    scrollContainer.current.addEventListener(
+    if (scrollContainer == undefined) return;
+
+    console.log(2, scrollContainer);
+    scrollContainer.addEventListener(
       "scroll",
-      onScroll.bind(scrollContainer),
+      () => onScroll(scrollContainer),
       false
     );
     return () => {
-      scrollContainer.current.removeEventListener(
+      scrollContainer.removeEventListener(
         "scroll",
-        onScroll.bind(scrollContainer),
+        () => onScroll(scrollContainer),
         false
       );
     };

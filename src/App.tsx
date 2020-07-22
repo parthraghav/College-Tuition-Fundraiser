@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, { useState, createRef, useRef } from "react";
 import PersonalityAnimatedBackground from "./IntroScreen/PersonalityAnimatedBackground";
 import logo from "./logo.svg";
 import "./App.css";
@@ -11,12 +11,12 @@ import { Controller, Scene } from "react-scrollmagic";
 import { Tween, Timeline } from "react-gsap";
 import IntroScreen from "./IntroScreen/IntroScreen";
 import { ScrollProvider } from "./ScrollContext";
+import StoryScreen from "./StoryScreen/StoryScreen";
 
 const App = () => {
-  let appRef = createRef<HTMLDivElement>();
-  console.log(appRef);
+  let appRef = useRef(null);
   return (
-    <ScrollProvider scrollContainer={appRef}>
+    <ScrollProvider scrollContainerRef={appRef}>
       <div
         ref={appRef}
         style={{
@@ -29,6 +29,7 @@ const App = () => {
         }}
       >
         <IntroScreen />
+        <StoryScreen />
         <FundScreen />
         <IntroStickyBanner hidden={false} />
         <SocialShareBanner />
