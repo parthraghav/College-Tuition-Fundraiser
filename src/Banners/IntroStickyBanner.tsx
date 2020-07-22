@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Scroll from "react-scroll";
 import "./styles.css";
+import { isMobile } from "react-device-detect";
 
 const scroller = Scroll.scroller;
 
@@ -75,6 +76,8 @@ export default class IntroStickyBanner extends Component<
           position: "fixed",
           width: "100%",
           height: "20%",
+          fontSize: isMobile ? "0.9em" : "1em",
+          lineHeight: isMobile ? "1.15em" : "inherit",
           bottom: this.props.hidden ? "-20%" : 0,
           color: "white",
           backgroundRepeat: "no-repeat",

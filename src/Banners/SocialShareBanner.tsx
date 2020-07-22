@@ -6,7 +6,6 @@ import {
   TwitterShareButton,
 } from "react-share";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { isMobile } from "react-device-detect";
 import { TimelineLite, TweenMax, Power3 } from "gsap";
 
 const SHAREABLE_LINK = "http://fund.parthraghav.com/";
