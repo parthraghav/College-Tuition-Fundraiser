@@ -98,6 +98,7 @@ function SnapShareScreen({ setState }: any) {
       style={{
         visibility: "hidden",
         position: "fixed",
+        lineHeight: "3em",
         left: 0,
         top: 0,
         height: "100vh",
@@ -114,7 +115,7 @@ function SnapShareScreen({ setState }: any) {
         ref={textContainerRef}
         style={{ height: "20vh", textAlign: "center" }}
       >
-        <h1 style={{ margin: 0 }}>🙏</h1>
+        <h1 style={{ margin: 0, fontSize: "4em" }}>🙏</h1>
         <h1 style={{ margin: 0 }}>Link copied!</h1>
       </div>
     </div>
