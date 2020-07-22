@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import Scroll from "react-scroll";
+import "./styles.css";
+
+const scroller = Scroll.scroller;
 
 interface IntroStickyBannerState {}
 
@@ -9,7 +13,7 @@ interface LinkTextProps {
   onClick: Function;
 }
 const LinkText = ({ label, onClick }: LinkTextProps) => (
-  <div onClick={() => onClick()}>
+  <div onClick={() => onClick()} className="defocused">
     <span style={{ color: "#4B89F6" }}>{label}</span>
   </div>
 );
@@ -22,6 +26,7 @@ interface LinkButtonProps {
 }
 const LinkButton = ({ label, onClick }: LinkTextProps) => (
   <div
+    className="defocused"
     onClick={() => onClick()}
     style={{
       background: "linear-gradient(#4B89F6,#2E7AFF)",
@@ -35,6 +40,26 @@ const LinkButton = ({ label, onClick }: LinkTextProps) => (
     <span style={{ color: "#FFFFFF" }}>{label}</span>
   </div>
 );
+
+function scrollToStoryScreen() {
+  scroller.scrollTo("StoryScreen", {
+    duration: 1500,
+    delay: 100,
+    smooth: true,
+    containerId: "main",
+    offset: 0,
+  });
+}
+
+function scrollToFundScreen() {
+  scroller.scrollTo("FundScreen", {
+    duration: 1500,
+    delay: 100,
+    smooth: true,
+    containerId: "main",
+    offset: 0,
+  });
+}
 
 export default class IntroStickyBanner extends Component<
   any,
@@ -74,7 +99,10 @@ export default class IntroStickyBanner extends Component<
                 Help me release my transcripts from a business hold. Since
                 coming out as gay, my financial support has been rescinded.
               </p>
-              <LinkText label="Read more" onClick={() => {}} />
+              <LinkText
+                label="Read more"
+                onClick={() => scrollToStoryScreen()}
+              />
             </div>
           </div>
           <div
@@ -87,7 +115,10 @@ export default class IntroStickyBanner extends Component<
             }}
           >
             <div style={{ textAlign: "center" }}>
-              <LinkButton label="Invest $10" onClick={() => {}} />
+              <LinkButton
+                label="Invest $10"
+                onClick={() => scrollToFundScreen()}
+              />
               <span>In my future</span>
             </div>
           </div>

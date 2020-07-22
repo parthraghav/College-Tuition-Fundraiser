@@ -12,12 +12,16 @@ import { Tween, Timeline } from "react-gsap";
 import IntroScreen from "./IntroScreen/IntroScreen";
 import { ScrollProvider } from "./ScrollContext";
 import StoryScreen from "./StoryScreen/StoryScreen";
+import Scroll from "react-scroll";
 
 const App = () => {
   let appRef = useRef(null);
+  let ScrollElement = Scroll.Element;
+
   return (
     <ScrollProvider scrollContainerRef={appRef}>
       <div
+        id="main"
         ref={appRef}
         style={{
           width: "100vw",
@@ -28,9 +32,18 @@ const App = () => {
           overflow: "scroll",
         }}
       >
-        <IntroScreen />
-        <StoryScreen />
-        <FundScreen />
+        <ScrollElement name="IntroScreen">
+          <IntroScreen />
+        </ScrollElement>
+
+        <ScrollElement name="StoryScreen">
+          <StoryScreen />
+        </ScrollElement>
+
+        <ScrollElement name="FundScreen">
+          <FundScreen />
+        </ScrollElement>
+
         <IntroStickyBanner hidden={false} />
         {/* <SocialShareBanner /> */}
       </div>
