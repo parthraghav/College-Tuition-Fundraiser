@@ -2,8 +2,8 @@ import React, { useState, createRef, useRef } from "react";
 import PersonalityAnimatedBackground from "./IntroScreen/PersonalityAnimatedBackground";
 import logo from "./logo.svg";
 import "./App.css";
-import IntroStickyBanner from "./IntroStickyBanner";
-import SocialShareBanner from "./SocialShareBanner";
+import IntroStickyBanner from "./Banners/IntroStickyBanner";
+import SocialShareBanner from "./Banners/SocialShareBanner";
 import InvisibleScroll, { ScrollDirection } from "./InvisibleScroll";
 import IntroText from "./IntroText";
 import FundScreen from "./FundScreen/FundScreen";
@@ -32,7 +32,7 @@ const App = () => {
         <StoryScreen />
         <FundScreen />
         <IntroStickyBanner hidden={false} />
-        <SocialShareBanner />
+        {/* <SocialShareBanner /> */}
       </div>
     </ScrollProvider>
   );

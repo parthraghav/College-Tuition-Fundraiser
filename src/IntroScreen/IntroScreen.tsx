@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AtomicImage from "./AtomicImage";
-import IntroStickyBanner from "../IntroStickyBanner";
+import IntroStickyBanner from "../Banners/IntroStickyBanner";
 import { ScrollConsumer } from "../ScrollContext";
 
 enum GogglePos {
