@@ -3,21 +3,9 @@ import ProgressVizGraphic from "./ProgressVizGraphic";
 import CashTextBox from "./CashTextBox";
 import QuickPaySelector from "./QuickPaySelector";
 import DonorList from "./DonorList";
+import { FirebaseContext } from "../Core/Firebase";
 
 interface FundScreenState {}
-
-const DonorData = [
-  { name: "Shagun Panwar", amount: 500 },
-  { name: "Lakshya Singh", amount: 200 },
-  { name: "Brian Zilles", amount: 150 },
-  { name: "Dazzle Raghav", amount: 300 },
-  { name: "Guru Sachdeva", amount: 400 },
-  { name: "Josh Daveson", amount: 550 },
-  { name: "Anonymous", amount: 420 },
-  { name: "Kyle Kirkland", amount: 140 },
-  { name: "Anubhavi", amount: 20 },
-  { name: "Anjali Reddy", amount: 700 },
-];
 
 export default function FundScreen() {
   const [valueAmount, setValueAmount] = useState(0);
@@ -74,7 +62,11 @@ export default function FundScreen() {
           }
         }
       >
-        <DonorList donorData={DonorData} />
+        <FirebaseContext.Consumer>
+          {(firebase) => {
+            return <DonorList />;
+          }}
+        </FirebaseContext.Consumer>
       </div>
     </div>
   );

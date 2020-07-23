@@ -10,28 +10,29 @@ import FundScreen from "./FundScreen/FundScreen";
 import { Controller, Scene } from "react-scrollmagic";
 import { Tween, Timeline } from "react-gsap";
 import IntroScreen from "./IntroScreen/IntroScreen";
-import { ScrollProvider } from "./ScrollContext";
+import { ScrollProvider } from "@foo-software/react-scroll-context";
+
 import StoryScreen from "./StoryScreen/StoryScreen";
 import Scroll from "react-scroll";
 
+const Context = React.createContext("scroll-context");
+
 const App = () => {
-  let appRef = useRef(null);
   let ScrollElement = Scroll.Element;
 
   return (
-    <ScrollProvider scrollContainerRef={appRef}>
-      <div
-        id="main"
-        ref={appRef}
-        style={{
-          width: "100vw",
-          height: "100vh",
-          //height: "-webkit-fill-available",
-          backgroundColor: "#f0eef1",
-          position: "relative",
-          overflow: "scroll",
-        }}
-      >
+    <div
+      id="main"
+      style={{
+        width: "100vw",
+        height: "100vh",
+        //height: "-webkit-fill-available",
+        backgroundColor: "#f0eef1",
+        position: "relative",
+        overflow: "scroll",
+      }}
+    >
+      <ScrollProvider Context={Context}>
         <ScrollElement name="IntroScreen">
           <IntroScreen />
         </ScrollElement>
@@ -46,8 +47,8 @@ const App = () => {
 
         <IntroStickyBanner hidden={true} />
         <SocialShareBanner />
-      </div>
-    </ScrollProvider>
+      </ScrollProvider>
+    </div>
   );
 };
 
