@@ -52,7 +52,7 @@ export default function CashTextBox(props: any) {
           stripeKey={STRIPE_PUBLISHABLE_KEY}
           image="https://instagram.fdel1-3.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/50237879_360623924521784_7002129199752869717_n.jpg?_nc_ht=instagram.fdel1-3.fna.fbcdn.net&_nc_cat=108&_nc_ohc=BwGMjXEih1cAX_BTLVU&oh=101f7850328d724e62978263bc2c0774&oe=5F4087B7" // the pop-in header image (default none)
           name="Parth's Transcript Fund" // the pop-in header title
-          description="Thank you for helping me release my transcript from a business hold" // the pop-in header subtitle
+          description="Thank you for helping me release my transcript" // the pop-in header subtitle
           ComponentClass="div"
           panelLabel="Donate" // prepended to the amount in the bottom pay button
           amount={1000000} // cents
