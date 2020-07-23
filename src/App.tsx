@@ -1,28 +1,48 @@
-import React, { useState, createRef, useRef } from "react";
-import PersonalityAnimatedBackground from "./IntroScreen/PersonalityAnimatedBackground";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
 import IntroStickyBanner from "./Banners/IntroStickyBanner";
 import SocialShareBanner from "./Banners/SocialShareBanner";
-import InvisibleScroll, { ScrollDirection } from "./InvisibleScroll";
-import IntroText from "./IntroText";
 import FundScreen from "./FundScreen/FundScreen";
-import { Controller, Scene } from "react-scrollmagic";
-import { Tween, Timeline } from "react-gsap";
 import IntroScreen from "./IntroScreen/IntroScreen";
-import { ScrollProvider } from "@foo-software/react-scroll-context";
 
 import StoryScreen from "./StoryScreen/StoryScreen";
 import Scroll from "react-scroll";
-
-const Context = React.createContext("scroll-context");
+import { ScrollDirection } from "./Utils/utils";
 
 const App = () => {
   let ScrollElement = Scroll.Element;
+  const [currentScrollY, setCurrentScrollY] = useState({
+    scrollYAbsolute: 0,
+    scrollYPercent: 0,
+    scrollDirection: ScrollDirection.Negative,
+  });
+
+  function handleScroll(evt: any) {
+    let element = evt.target;
+    if (element.clientHeight === 0) {
+      return;
+    }
+    let scrollYAbsolute = element.clientHeight + element.scrollTop;
+    let scrollYPercent =
+      (element.scrollTop * 100) / (element.scrollHeight - element.clientHeight);
+    let scrollDirection = currentScrollY.scrollDirection;
+    if (scrollYAbsolute > currentScrollY.scrollYAbsolute) {
+      scrollDirection = ScrollDirection.Positive;
+    } else if (scrollYAbsolute < currentScrollY.scrollYAbsolute) {
+      scrollDirection = ScrollDirection.Negative;
+    }
+    setCurrentScrollY({
+      scrollYAbsolute,
+      scrollYPercent,
+      scrollDirection,
+    });
+    console.log(currentScrollY);
+  }
 
   return (
     <div
       id="main"
+      onScroll={handleScroll}
       style={{
         width: "100vw",
         height: "100vh",
@@ -32,22 +52,20 @@ const App = () => {
         overflow: "scroll",
       }}
     >
-      <ScrollProvider Context={Context}>
-        <ScrollElement name="IntroScreen">
-          <IntroScreen />
-        </ScrollElement>
+      <ScrollElement name="IntroScreen">
+        <IntroScreen scrollInfo={currentScrollY} />
+      </ScrollElement>
 
-        <ScrollElement name="StoryScreen">
-          <StoryScreen />
-        </ScrollElement>
+      <ScrollElement name="StoryScreen">
+        <StoryScreen scrollInfo={currentScrollY} />
+      </ScrollElement>
 
-        <ScrollElement name="FundScreen">
-          <FundScreen />
-        </ScrollElement>
+      <ScrollElement name="FundScreen">
+        <FundScreen />
+      </ScrollElement>
 
-        <IntroStickyBanner hidden={true} />
-        <SocialShareBanner />
-      </ScrollProvider>
+      <IntroStickyBanner hidden={false} scrollInfo={currentScrollY} />
+      <SocialShareBanner scrollInfo={currentScrollY} />
     </div>
   );
 };
