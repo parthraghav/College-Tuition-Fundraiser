@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Scroll from "react-scroll";
 import "./styles.css";
 import { isMobile } from "react-device-detect";
+import { ScrollDirection } from "../Utils/utils";
 
 const scroller = Scroll.scroller;
 
@@ -70,6 +71,11 @@ export default class IntroStickyBanner extends Component<
     super(props);
   }
   render() {
+    let isHidden = true;
+    console.log("info,", this.props.scrollInfo.scrollYPercent);
+    if (this.props.scrollInfo.scrollDirection == ScrollDirection.Negative) {
+      isHidden = this.props.scrollInfo.scrollYPercent > 10;
+    }
     return (
       <div
         style={{
@@ -78,7 +84,7 @@ export default class IntroStickyBanner extends Component<
           height: "20%",
           fontSize: isMobile ? "0.9em" : "1em",
           lineHeight: isMobile ? "1.15em" : "inherit",
-          bottom: this.props.hidden ? "-20%" : 0,
+          bottom: isHidden ? "-20%" : 0,
           color: "white",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

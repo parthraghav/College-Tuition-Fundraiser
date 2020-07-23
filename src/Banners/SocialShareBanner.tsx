@@ -190,6 +190,7 @@ export default class SocialShareBanner extends Component<
     super(props);
   }
   render() {
+    const isHidden = this.props.scrollInfo.scrollYPercent < 80;
     return (
       <div
         style={{
@@ -198,7 +199,7 @@ export default class SocialShareBanner extends Component<
           position: "fixed",
           height: "16%",
           minHeight: "100px",
-          bottom: this.props.hidden ? "-16%" : 0,
+          bottom: isHidden ? "-16%" : 0,
           padding: "0em 1em",
           left: 0,
           right: 0,
