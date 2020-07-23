@@ -30,7 +30,6 @@ const DonorListBase = ({ firebase }: any) => {
 
     const unsubscribe = query.onSnapshot((snapshot: any) => {
       if (snapshot.size) {
-        console.log(snapshot);
         let donorDataFromSnapshot: any = [];
         snapshot.forEach((doc: { data: () => any }) =>
           donorDataFromSnapshot.push({ ...doc.data() })
@@ -65,14 +64,16 @@ const DonorListBase = ({ firebase }: any) => {
             {isLoading ? (
               <CircularLoader />
             ) : (
-              donorData.map(({ name, totalPaidAmount }: any, index: number) => (
-                <DonorEntry
-                  key={index}
-                  name={name}
-                  amount={totalPaidAmount}
-                  index={index}
-                />
-              ))
+              donorData.map(
+                ({ name, totalPaidAmount, anonymous }: any, index: number) => (
+                  <DonorEntry
+                    key={index}
+                    name={anonymous ? "Anonymous" : name}
+                    amount={totalPaidAmount}
+                    index={index}
+                  />
+                )
+              )
             )}
           </div>
         </div>
