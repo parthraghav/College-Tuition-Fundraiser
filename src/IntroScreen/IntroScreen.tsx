@@ -208,10 +208,10 @@ export default function IntroScreen({ scrollInfo }: any) {
     scroll_activations,
     scrollInfo.scrollYAbsolute
   );
-  // console.log(scrollY, backgroundTransformation, foregroundTransformation);
+  console.log("ppp", scrollInfo);
 
   return (
-    <div style={{ background: "gray", height: "200vh" }}>
+    <div style={{ height: "100vh" }}>
       <div
         style={{
           ...backgroundTransformation,
@@ -239,6 +239,7 @@ export default function IntroScreen({ scrollInfo }: any) {
           }}
         />
       </div>
+      <div style={{ height: "200vh", background: "rgba(0,0,0,100)" }}></div>
     </div>
   );
 }
