@@ -36,7 +36,6 @@ const App = () => {
       scrollYPercent,
       scrollDirection,
     });
-    console.log(currentScrollY);
   }
 
   return (
