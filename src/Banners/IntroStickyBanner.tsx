@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useRef } from "react";
 import Scroll from "react-scroll";
 import "./styles.css";
 import { isMobile } from "react-device-detect";
@@ -70,6 +70,7 @@ export default class IntroStickyBanner extends Component<
   constructor(props: any) {
     super(props);
   }
+
   render() {
     let isHidden = true;
     console.log("info,", this.props.scrollInfo.scrollYPercent);
