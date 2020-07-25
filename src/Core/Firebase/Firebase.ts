@@ -10,4 +10,6 @@ class Firebase {
   }
 }
 
-export default Firebase;
+const FirebaseApp = new Firebase();
+
+export { FirebaseApp, Firebase };
