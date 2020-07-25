@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import "./styles.css";
 import { tokenHandler } from "../Core/TokenManager";
 import { STRIPE_PUBLISHABLE_KEY } from "../Core/Config";
 
 export default function CashTextBox(props: any) {
-  const [currentValue, setCurrentValue] = useState(props.valueAmount);
   function handleValueChange(evt: any) {
-    console.log("i was called");
-    setCurrentValue(evt.target.value);
+    console.log("i was called", evt.target.value);
+    props.onValueChange(evt.target.value);
+    // setCurrentValue(evt.target.value);
   }
+
   return (
     <div
       style={{
@@ -33,6 +34,7 @@ export default function CashTextBox(props: any) {
           placeholder="$10"
           type="number"
           value={props.valueAmount}
+          onChange={handleValueChange}
           style={{
             width: "100%",
             height: "100%",

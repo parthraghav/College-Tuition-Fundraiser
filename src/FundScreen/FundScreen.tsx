@@ -8,8 +8,7 @@ import { FirebaseContext } from "../Core/Firebase";
 interface FundScreenState {}
 
 export default function FundScreen() {
-  const [valueAmount, setValueAmount] = useState(0);
-
+  const [valueAmount, setValueAmount] = useState(10);
   return (
     <div
       style={{
@@ -43,7 +42,7 @@ export default function FundScreen() {
           minHeight: "128px",
         }}
       >
-        <CashTextBox valueAmount={valueAmount} />
+        <CashTextBox valueAmount={valueAmount} onValueChange={setValueAmount} />
       </div>
       <div
         style={{
@@ -52,6 +51,7 @@ export default function FundScreen() {
         }}
       >
         <QuickPaySelector
+          valueAmount={valueAmount}
           onValueChange={(newVal: any) => setValueAmount(newVal)}
         />
       </div>

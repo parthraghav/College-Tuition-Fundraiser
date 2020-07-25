@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuickPayRadioButton from "./QuickPayRadioButton";
 
 const quickPayOptions = [
@@ -15,10 +15,18 @@ const quickPayOptions = [
 ];
 
 export default function QuickPaySelector(props: any) {
-  const [focusedIndex, setFocusedIndex] = useState(2);
+  const [focusedIndex, setFocusedIndex] = useState(props.valueAmount);
+
+  useEffect(() => {
+    let optionIndex = quickPayOptions.findIndex(
+      (el) => el.amount == props.valueAmount
+    );
+    setFocusedIndex(optionIndex);
+  }, [props.valueAmount]);
+
   function handleRadioClick(index: number) {
     setFocusedIndex(index);
-    props.onValueChange(quickPayOptions[index].amount);
+    if (index !== -1) props.onValueChange(quickPayOptions[index].amount);
   }
   return (
     <div
