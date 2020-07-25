@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import useWindowSize from "./useWindowSize.hook";
 import { interpolate } from "gsap/all";
 import IntroText from "./IntroText";
-import { between } from "../Utils/utils";
+import { between } from "../Utils";
 
 const thresholdfactor = 2;
 

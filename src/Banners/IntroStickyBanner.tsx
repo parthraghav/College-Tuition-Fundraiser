@@ -2,7 +2,7 @@ import React, { Component, useRef } from "react";
 import Scroll from "react-scroll";
 import "./styles.css";
 import { isMobile } from "react-device-detect";
-import { ScrollDirection } from "../Utils/utils";
+import { ScrollDirection } from "../Utils";
 
 const scroller = Scroll.scroller;
 
