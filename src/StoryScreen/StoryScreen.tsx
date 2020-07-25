@@ -4,6 +4,7 @@ export default function StoryScreen(props: any) {
   return (
     <div
       style={{
+        position: "relative",
         height: "fit-content",
         background: "#f0eef1",
         padding: "20px",

@@ -22,7 +22,13 @@ const App = () => {
     if (element.clientHeight === 0) {
       return;
     }
-    let scrollYAbsolute = element.clientHeight + element.scrollTop;
+    // console.log(
+    //   element.clientHeight,
+    //   element.scrollTop,
+    //   element.clientHeight + element.scrollTop
+    // );
+    // let scrollYAbsolute = element.clientHeight + element.scrollTop;
+    let scrollYAbsolute = element.scrollTop;
     let scrollYPercent =
       (element.scrollTop * 100) / (element.scrollHeight - element.clientHeight);
     let scrollDirection = currentScrollY.scrollDirection;
@@ -56,7 +62,7 @@ const App = () => {
       </ScrollElement>
 
       <ScrollElement name="StoryScreen">
-        <StoryScreen scrollInfo={currentScrollY} />
+        <StoryScreen />
       </ScrollElement>
 
       <ScrollElement name="FundScreen">

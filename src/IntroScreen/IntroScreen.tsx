@@ -108,7 +108,7 @@ export default function IntroScreen({ scrollInfo }: any) {
 
   const scroll_activations = [
     {
-      scrollRange: [0, 700],
+      scrollRange: [0, 100],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
         get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
@@ -120,7 +120,7 @@ export default function IntroScreen({ scrollInfo }: any) {
     },
 
     {
-      scrollRange: [700, 750],
+      scrollRange: [100, 200],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
@@ -131,7 +131,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [750, 800],
+      scrollRange: [200, 300],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.Center, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
@@ -142,7 +142,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [800, 900],
+      scrollRange: [300, 400],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.Center, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
@@ -153,7 +153,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [900, 1000],
+      scrollRange: [400, 500],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.Center, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
@@ -164,7 +164,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [1000, 1100],
+      scrollRange: [500, 600],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.Center, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
@@ -175,7 +175,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [1100, 1200],
+      scrollRange: [600, 700],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.Center, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
@@ -186,7 +186,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [1100, 12000],
+      scrollRange: [700, 10000],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.Center, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
@@ -211,13 +211,18 @@ export default function IntroScreen({ scrollInfo }: any) {
   console.log("ppp", scrollInfo);
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "200vh" }}>
+      <div style={{ height: "100vh", background: "rgb(0, 0, 0)" }}>
+        <div style={{ height: "200vh", background: "rgb(0, 0, 0)" }} />
+      </div>
       <div
         style={{
           ...backgroundTransformation,
-          position: "absolute",
+          position: "fixed",
+          top: 0,
           transition: "left 2s",
           overflow: "hidden",
+          pointerEvents: "none",
         }}
       >
         <img
@@ -230,7 +235,6 @@ export default function IntroScreen({ scrollInfo }: any) {
           src={FOREGROUND_IMG_URL}
           style={{
             ...foregroundTransformation,
-
             position: "absolute",
             width: foregroundToBackgroundHorizontalRatio + "%",
             top: foregroundToBackgroundVerticalRatio + "%",
@@ -239,7 +243,7 @@ export default function IntroScreen({ scrollInfo }: any) {
           }}
         />
       </div>
-      <div style={{ height: "200vh", background: "rgba(0,0,0,100)" }}></div>
+      {/* <div style={{ height: "200vh", background: "rgba(0,0,0,100)" }}></div> */}
     </div>
   );
 }
