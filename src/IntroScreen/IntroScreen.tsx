@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useWindowSize from "./useWindowSize.hook";
+import { useWindowSize } from "../Utils";
 import { interpolate } from "gsap/all";
 import IntroText from "./IntroText";
 import { between } from "../Utils";
@@ -24,7 +24,7 @@ const interpolate_transformations_with_scroll = (
   scroll_y: number
 ) => {
   let activation_obj;
-  if (cached_activation_obj == undefined) {
+  if (cached_activation_obj === undefined) {
     for (let index = 0; index < scroll_activations.length; index++) {
       const { scrollRange } = scroll_activations[index];
       if (
@@ -143,19 +143,11 @@ export default function IntroScreen({ scrollInfo }: any) {
   const FOREGROUND_IMG_URL =
     "https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F1431436876.png?alt=media";
   let img_width;
-  if (win_dim.height != undefined) {
+  if (win_dim.height !== undefined) {
     img_width = win_dim.height * (1080 / 564);
   } else {
     alert("something went wrong finding the window size");
   }
-
-  const introTextLabelArr = [
-    "Hi",
-    "I'm Parth",
-    "I am a 20 year old proud gay man.",
-    "I have a dream to get a college degree",
-    "This is my story",
-  ];
 
   const scroll_activations = [
     {
@@ -279,12 +271,14 @@ export default function IntroScreen({ scrollInfo }: any) {
       >
         <img
           src={BACKGROUND_IMG_URL}
+          alt="Parth"
           style={{
             width: img_width,
           }}
         />
         <img
           src={FOREGROUND_IMG_URL}
+          alt="rainbow colored glasses"
           style={{
             ...foregroundTransformation,
             position: "absolute",

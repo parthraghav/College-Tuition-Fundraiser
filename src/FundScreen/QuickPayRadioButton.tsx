@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
 
 export default function QuickPayRadioButton(props: any) {
-  const [isSelected, setIsSelected] = useState(props.focused);
-
   return (
     <div
       onClick={() => props.onClick(props.index)}

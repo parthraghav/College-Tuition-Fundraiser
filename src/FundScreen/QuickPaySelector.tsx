@@ -16,7 +16,6 @@ const quickPayOptions = [
 
 export default function QuickPaySelector(props: any) {
   const [focusedIndex, setFocusedIndex] = useState(2);
-  let prevValueAmount, currValueAmout;
   function handleRadioClick(index: number) {
     setFocusedIndex(index);
     props.onValueChange(quickPayOptions[index].amount);
@@ -39,10 +38,10 @@ export default function QuickPaySelector(props: any) {
           amount={amount}
           index={index}
           key={index}
-          focused={focusedIndex == index}
+          focused={focusedIndex === index}
           onClick={handleRadioClick}
         />,
-        (index == 2 || index == 6) && <br key={-1 * index} />,
+        (index === 2 || index === 6) && <br key={-1 * index} />,
       ])}
     </div>
   );

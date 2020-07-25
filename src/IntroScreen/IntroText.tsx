@@ -14,8 +14,8 @@ export default class IntroText extends Component<any, IntroTextState> {
   }
   componentDidUpdate(prevProps: any) {
     if (
-      prevProps.labelTitle == undefined &&
-      prevProps.labelSubtext == undefined
+      prevProps.labelTitle === undefined &&
+      prevProps.labelSubtext === undefined
     ) {
       // setup smoothing animation here
     }

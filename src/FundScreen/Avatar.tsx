@@ -27,7 +27,7 @@ export const AvatarUrlGenerator = (name: string, color: string) => {
 };
 
 export default function CircularAvatar({ name, index }: any) {
-  if (name.replace(/\s/g, "") == "") {
+  if (name.replace(/\s/g, "") === "") {
     throw new Error("donot entry, invalid name");
   }
   let shortform;
@@ -35,7 +35,7 @@ export default function CircularAvatar({ name, index }: any) {
     .split(" ")
     .map((el: any) => el[0])
     .join("");
-  if (shortform.length == 1) {
+  if (shortform.length === 1) {
     shortform += shortform;
   }
   let color = RandColors[index % RandColors.length];
