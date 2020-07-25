@@ -28,7 +28,7 @@ export default class IntroText extends Component<any, IntroTextState> {
     return (
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           width: "100%",
           height: "20%",
           bottom: this.props.hidden ? "-20%" : 0,

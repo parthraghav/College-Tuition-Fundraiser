@@ -92,6 +92,39 @@ const get_background_left_margin = (
   return { left: backgroundLeftMargin };
 };
 
+const get_intro_text = (scroll_y: number) => {
+  let labelSubtext, labelTitle;
+  const introTextLabelArr = [
+    "Hi",
+    "I'm Parth",
+    "I am a 20 year old proud gay man.",
+    "I have a dream to get a college degree",
+    "This is my story",
+  ];
+
+  if (between(scroll_y, 200, 300)) {
+    labelSubtext = "";
+    labelTitle = introTextLabelArr[0];
+  } else if (between(scroll_y, 300, 400)) {
+    labelSubtext = introTextLabelArr[0];
+    labelTitle = introTextLabelArr[1];
+  } else if (between(scroll_y, 400, 500)) {
+    labelSubtext = introTextLabelArr[1];
+    labelTitle = introTextLabelArr[2];
+  } else if (between(scroll_y, 500, 600)) {
+    labelSubtext = introTextLabelArr[2];
+    labelTitle = introTextLabelArr[3];
+  } else if (between(scroll_y, 600, 700)) {
+    labelSubtext = introTextLabelArr[3];
+    labelTitle = introTextLabelArr[4];
+  }
+
+  return {
+    labelSubtext,
+    labelTitle,
+  };
+};
+
 export default function IntroScreen({ scrollInfo }: any) {
   const win_dim = useWindowSize();
   console.log(win_dim);
@@ -107,6 +140,14 @@ export default function IntroScreen({ scrollInfo }: any) {
   } else {
     alert("something went wrong finding the window size");
   }
+
+  const introTextLabelArr = [
+    "Hi",
+    "I'm Parth",
+    "I am a 20 year old proud gay man.",
+    "I have a dream to get a college degree",
+    "This is my story",
+  ];
 
   const scroll_activations = [
     {
@@ -210,6 +251,7 @@ export default function IntroScreen({ scrollInfo }: any) {
     scroll_activations,
     scrollInfo.scrollYAbsolute
   );
+
   // console.log("ppp", scrollInfo);
 
   return (
@@ -245,6 +287,7 @@ export default function IntroScreen({ scrollInfo }: any) {
           }}
         />
       </div>
+      <IntroText {...get_intro_text(scrollInfo.scrollYAbsolute)} />
       {/* <div style={{ height: "200vh", background: "rgba(0,0,0,100)" }}></div> */}
     </div>
   );
