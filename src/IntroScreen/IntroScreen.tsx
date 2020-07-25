@@ -256,15 +256,15 @@ export default function IntroScreen({ scrollInfo }: any) {
 
   return (
     <div style={{ height: "200vh" }}>
-      <div style={{ height: "100vh", background: "rgb(0, 0, 0)" }}>
-        <div style={{ height: "200vh", background: "rgb(0, 0, 0)" }} />
+      <div style={{ height: "100vh" }}>
+        <div style={{ height: "200vh" }} />
       </div>
       <div
         style={{
           ...backgroundTransformation,
           position: "fixed",
           top: 0,
-          transition: "left 2s",
+          transition: "left 1s",
           overflow: "hidden",
           pointerEvents: "none",
         }}
@@ -283,7 +283,7 @@ export default function IntroScreen({ scrollInfo }: any) {
             width: foregroundToBackgroundHorizontalRatio + "%",
             top: foregroundToBackgroundVerticalRatio + "%",
             left: "50%",
-            transition: "transform 2s",
+            transition: "transform 1s",
           }}
         />
       </div>
