@@ -24,7 +24,7 @@ export default function FundScreen() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         display: "block",
-        paddingBottom: "16%",
+        paddingBottom: "120px",
         // flexDirection: "column",
         // overflow: "scroll",
       }}
