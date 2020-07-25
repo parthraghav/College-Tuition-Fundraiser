@@ -10,6 +10,8 @@ function Truck(props: any) {
       }}
     >
       <span
+        role="img"
+        aria-label="Truck"
         style={{
           fontSize: "2em",
         }}
@@ -30,6 +32,8 @@ function Flag(props: any) {
       }}
     >
       <span
+        role="img"
+        aria-label="Milestone"
         style={{
           fontSize: "2em",
         }}
