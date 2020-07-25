@@ -41,7 +41,7 @@ const interpolate_transformations_with_scroll = (
   } = activation_obj;
   let interpolation_value =
     (scroll_y - scrollRange[0]) / (scrollRange[1] - scrollRange[0]);
-  console.log(interpolation_value, scrollRange);
+  // console.log(interpolation_value, scrollRange);
   return {
     backgroundTransformation: interpolate(
       backgroundTransformation[0],
@@ -208,7 +208,7 @@ export default function IntroScreen({ scrollInfo }: any) {
     scroll_activations,
     scrollInfo.scrollYAbsolute
   );
-  console.log("ppp", scrollInfo);
+  // console.log("ppp", scrollInfo);
 
   return (
     <div style={{ height: "200vh" }}>
