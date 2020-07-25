@@ -4,6 +4,8 @@ import { interpolate } from "gsap/all";
 import IntroText from "./IntroText";
 import { between } from "../Utils/utils";
 
+const thresholdfactor = 2;
+
 enum GogglePos {
   Out,
   On,
@@ -25,7 +27,13 @@ const interpolate_transformations_with_scroll = (
   if (cached_activation_obj == undefined) {
     for (let index = 0; index < scroll_activations.length; index++) {
       const { scrollRange } = scroll_activations[index];
-      if (between(scroll_y, scrollRange[0], scrollRange[1])) {
+      if (
+        between(
+          scroll_y,
+          thresholdfactor * scrollRange[0],
+          thresholdfactor * scrollRange[1]
+        )
+      ) {
         activation_obj = scroll_activations[index];
         break;
       }
@@ -40,7 +48,8 @@ const interpolate_transformations_with_scroll = (
     foregroundTransformation,
   } = activation_obj;
   let interpolation_value =
-    (scroll_y - scrollRange[0]) / (scrollRange[1] - scrollRange[0]);
+    (scroll_y - thresholdfactor * scrollRange[0]) /
+    ((scrollRange[1] - scrollRange[0]) * thresholdfactor);
   // console.log(interpolation_value, scrollRange);
   return {
     backgroundTransformation: interpolate(
@@ -58,13 +67,13 @@ const get_foreground_transform = (goggle_pos: GogglePos) => {
   var foregroundTransform;
   switch (goggle_pos) {
     case GogglePos.Out:
-      foregroundTransform = "translate(0%, -1000%)";
+      foregroundTransform = "translate(0%, -1000%) scale(1,1)";
       break;
     case GogglePos.On:
-      foregroundTransform = "translate(-50%, 0%)";
+      foregroundTransform = "translate(-50%, 0%) scale(1,1)";
       break;
     case GogglePos.Down:
-      foregroundTransform = "translate(-50%, 20%)";
+      foregroundTransform = "translate(-50%, 20%) scale(1,1)";
       break;
     case GogglePos.Up:
       foregroundTransform = "translate(-50%, -140%) scale(1,-1)";
@@ -102,19 +111,19 @@ const get_intro_text = (scroll_y: number) => {
     "This is my story",
   ];
 
-  if (between(scroll_y, 200, 300)) {
+  if (between(scroll_y, thresholdfactor * 200, thresholdfactor * 300)) {
     labelSubtext = "";
     labelTitle = introTextLabelArr[0];
-  } else if (between(scroll_y, 300, 400)) {
+  } else if (between(scroll_y, thresholdfactor * 300, thresholdfactor * 400)) {
     labelSubtext = introTextLabelArr[0];
     labelTitle = introTextLabelArr[1];
-  } else if (between(scroll_y, 400, 500)) {
+  } else if (between(scroll_y, thresholdfactor * 400, thresholdfactor * 500)) {
     labelSubtext = introTextLabelArr[1];
     labelTitle = introTextLabelArr[2];
-  } else if (between(scroll_y, 500, 600)) {
+  } else if (between(scroll_y, thresholdfactor * 500, thresholdfactor * 600)) {
     labelSubtext = introTextLabelArr[2];
     labelTitle = introTextLabelArr[3];
-  } else if (between(scroll_y, 600, 700)) {
+  } else if (between(scroll_y, thresholdfactor * 600, thresholdfactor * 700)) {
     labelSubtext = introTextLabelArr[3];
     labelTitle = introTextLabelArr[4];
   }
@@ -127,7 +136,6 @@ const get_intro_text = (scroll_y: number) => {
 
 export default function IntroScreen({ scrollInfo }: any) {
   const win_dim = useWindowSize();
-  console.log(win_dim);
   const foregroundToBackgroundHorizontalRatio: number = 0.32203389839 * 100;
   const foregroundToBackgroundVerticalRatio: number = (210 / 551) * 100;
   const BACKGROUND_IMG_URL =
@@ -255,9 +263,9 @@ export default function IntroScreen({ scrollInfo }: any) {
   // console.log("ppp", scrollInfo);
 
   return (
-    <div style={{ height: "200vh" }}>
+    <div style={{ height: "350vh" }}>
       <div style={{ height: "100vh" }}>
-        <div style={{ height: "200vh" }} />
+        <div style={{ height: "350vh" }} />
       </div>
       <div
         style={{
