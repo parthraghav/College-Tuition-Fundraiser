@@ -79,7 +79,7 @@ const get_background_left_margin = (
 ) => {
   var backgroundLeftMargin;
   const img_width = window_dimension.height * (1080 / 564);
-  const window_width = window_dimension.height;
+  const window_width = window_dimension.width;
 
   switch (background_pos) {
     case BackgroundPosition.HalfLeft:
@@ -94,7 +94,7 @@ const get_background_left_margin = (
 
 export default function IntroScreen({ scrollInfo }: any) {
   const win_dim = useWindowSize();
-
+  console.log(win_dim);
   const foregroundToBackgroundHorizontalRatio: number = 0.32203389839 * 100;
   const foregroundToBackgroundVerticalRatio: number = (210 / 551) * 100;
   const BACKGROUND_IMG_URL =
@@ -104,6 +104,8 @@ export default function IntroScreen({ scrollInfo }: any) {
   let img_width;
   if (win_dim.height != undefined) {
     img_width = win_dim.height * (1080 / 564);
+  } else {
+    alert("something went wrong finding the window size");
   }
 
   const scroll_activations = [
