@@ -67,10 +67,10 @@ export const updateUser = async (user: User, update: UserDocument) => {
 
       await userRef.set(
         {
-          email: user.email || userData?.email,
-          currency: update.currency || userData?.currency,
-          anonymous: update.anonymous || userData?.anonymous,
-          name: update.name || userData?.name,
+          email: user?.email ?? userData?.email,
+          currency: update?.currency ?? userData?.currency,
+          anonymous: update?.anonymous ?? userData?.anonymous,
+          name: update?.name ?? userData?.name,
           ...paymentFieldBatch,
         },
         { merge: true }
