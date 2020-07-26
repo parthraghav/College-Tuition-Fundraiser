@@ -1,6 +1,7 @@
 import * as CloudFunctions from "firebase-functions";
 
-const stripe = require("stripe")(CloudFunctions.config().stripe.testkey);
+// const stripe = require("stripe")(CloudFunctions.config().stripe.testkey);
+const stripe = require("stripe")(CloudFunctions.config().stripe.livekey);
 
 interface Charge {
   amount: number;

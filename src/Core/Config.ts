@@ -1,2 +1,4 @@
 export const STRIPE_PUBLISHABLE_KEY =
-  "pk_test_51H5cnkCDRFDj5Do1wBE3lbjhHlq8dDdG4QhG47K2Lf1VMkkZj7FLreHbUZKPhz9fdZX0YUBiVqRbqKFdhQpSurwH00tgqGqMAI";
+  "pk_live_51H5cnkCDRFDj5Do1Jlq2GIdMZkywbIgzapegBLYqCvHfWXdW8aMnTMI0HBlw4ceBzRNeAdCiOgaHzfb6VuuJ5Vq100UKkVxFhX";
+// export const STRIPE_PUBLISHABLE_KEY =
+//   "pk_test_51H5cnkCDRFDj5Do1wBE3lbjhHlq8dDdG4QhG47K2Lf1VMkkZj7FLreHbUZKPhz9fdZX0YUBiVqRbqKFdhQpSurwH00tgqGqMAI";
