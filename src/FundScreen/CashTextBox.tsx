@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import "./styles.css";
-import { tokenHandler } from "../Core/TokenManager";
 import { STRIPE_PUBLISHABLE_KEY } from "../Core/Config";
 
 export default function CashTextBox(props: any) {
   function handleValueChange(evt: any) {
-    console.log("i was called", evt.target.value);
+    // console.log("i was called", evt.target.value);
     props.onValueChange(evt.target.value);
     // setCurrentValue(evt.target.value);
-  }
-
-  function myTokenHandler(token: any) {
-    tokenHandler(token, props.valueAmount);
   }
 
   return (
@@ -54,7 +49,7 @@ export default function CashTextBox(props: any) {
           }}
         />
         <StripeCheckout
-          token={myTokenHandler}
+          token={props.onSubmit}
           stripeKey={STRIPE_PUBLISHABLE_KEY}
           image="https://instagram.fdel1-3.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/50237879_360623924521784_7002129199752869717_n.jpg?_nc_ht=instagram.fdel1-3.fna.fbcdn.net&_nc_cat=108&_nc_ohc=BwGMjXEih1cAX_BTLVU&oh=101f7850328d724e62978263bc2c0774&oe=5F4087B7" // the pop-in header image (default none)
           name="Parth's Transcript Fund" // the pop-in header title
@@ -75,6 +70,7 @@ export default function CashTextBox(props: any) {
               fontWeight: 500,
               textDecoration: "none",
               userSelect: "none",
+              cursor: "pointer",
             }}
           >
             Invest
