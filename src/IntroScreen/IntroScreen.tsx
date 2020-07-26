@@ -285,7 +285,7 @@ export default function IntroScreen({ scrollInfo }: any) {
           ...backgroundTransformation,
           position: "fixed",
           top: 0,
-          transition: "left 1s",
+          transition: "left 0.5s",
           overflow: "hidden",
           pointerEvents: "none",
         }}
@@ -306,7 +306,7 @@ export default function IntroScreen({ scrollInfo }: any) {
             width: foregroundToBackgroundHorizontalRatio + "%",
             top: foregroundToBackgroundVerticalRatio + "%",
             left: "50%",
-            transition: "transform 1s",
+            transition: "transform 0.5s",
           }}
         />
       </div>

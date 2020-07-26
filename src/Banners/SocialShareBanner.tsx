@@ -207,8 +207,8 @@ export default class SocialShareBanner extends Component<
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           transition: "bottom 1s",
-          backgroundColor: "#F4F1EF",
-          borderTop: "1px solid #CECECE",
+          backgroundColor: "rgba(244, 241, 239, 0.98)",
+          borderTop: "1px solid rgb(241, 241, 241)",
           userSelect: "none",
         }}
       >
