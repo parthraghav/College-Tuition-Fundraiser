@@ -27,7 +27,6 @@ const interpolate_transformations_with_scroll = (
 
   if (cached_activation_obj === undefined) {
     for (let index = 0; index < scroll_activations.length; index++) {
-      if (scroll_activations[index] === undefined) console.log(index);
       const { scrollRange } = scroll_activations[index];
       if (
         between(
@@ -43,7 +42,6 @@ const interpolate_transformations_with_scroll = (
   } else {
     activation_obj = cached_activation_obj;
   }
-
   const {
     scrollRange,
     backgroundTransformation,
@@ -153,6 +151,17 @@ export default function IntroScreen({ scrollInfo }: any) {
 
   const scroll_activations = [
     {
+      scrollRange: [-100, 0],
+      backgroundTransformation: [
+        get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
+        get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
+      ],
+      foregroundTransformation: [
+        get_foreground_transform(GogglePos.On),
+        get_foreground_transform(GogglePos.On),
+      ],
+    },
+    {
       scrollRange: [0, 100],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
@@ -257,9 +266,19 @@ export default function IntroScreen({ scrollInfo }: any) {
   // console.log("ppp", scrollInfo);
 
   return (
-    <div style={{ height: "350vh" }}>
+    <div
+      style={{
+        height: thresholdfactor * 700 + 800 + "px",
+        // height: "350vh"
+      }}
+    >
       <div style={{ height: "100vh" }}>
-        <div style={{ height: "350vh" }} />
+        <div
+          style={{
+            height: thresholdfactor * 700 + 800 + "px",
+            // height: "350vh"
+          }}
+        />
       </div>
       <div
         style={{
