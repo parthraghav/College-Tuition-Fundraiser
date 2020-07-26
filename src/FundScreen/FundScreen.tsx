@@ -4,11 +4,41 @@ import CashTextBox from "./CashTextBox";
 import QuickPaySelector from "./QuickPaySelector";
 import DonorList from "./DonorList";
 import { FirebaseContext } from "../Core/Firebase";
+import { tokenHandler } from "../Core/TokenManager";
+import { FinalizingPrompt } from "./FinalizingPrompt";
 
 interface FundScreenState {}
 
 export default function FundScreen() {
   const [valueAmount, setValueAmount] = useState(10);
+  const [token, setToken] = useState(null);
+  const [finalizingPromptState, setFinalizingPromptState] = useState(
+    "SUBMITTING" // "WAITING" "SUCCESSFUL"
+  );
+  const [isFinalizingPromptVisible, setIsFinalizingPromptVisible] = useState(
+    false
+  );
+
+  const handleToken = async (token: any) => {
+    setIsFinalizingPromptVisible(true);
+    setToken(token);
+  };
+
+  const handleFormSubmit = async (name: string) => {
+    function error() {
+      setFinalizingPromptState("ERROR");
+    }
+    function success() {
+      setFinalizingPromptState("SUCCESSFUL");
+    }
+    setFinalizingPromptState("WAITING");
+    await tokenHandler(token, valueAmount, name, { success, error });
+    setTimeout(() => {
+      setIsFinalizingPromptVisible(false);
+      setFinalizingPromptState("SUBMITTING");
+    }, 3000);
+  };
+
   return (
     <div
       style={{
@@ -42,7 +72,11 @@ export default function FundScreen() {
           minHeight: "128px",
         }}
       >
-        <CashTextBox valueAmount={valueAmount} onValueChange={setValueAmount} />
+        <CashTextBox
+          valueAmount={valueAmount}
+          onValueChange={setValueAmount}
+          onSubmit={handleToken}
+        />
       </div>
       <div
         style={{
@@ -69,6 +103,12 @@ export default function FundScreen() {
           }}
         </FirebaseContext.Consumer>
       </div>
+      {isFinalizingPromptVisible && (
+        <FinalizingPrompt
+          onSubmit={handleFormSubmit}
+          state={finalizingPromptState}
+        />
+      )}
     </div>
   );
 }
