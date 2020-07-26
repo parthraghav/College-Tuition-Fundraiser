@@ -9,6 +9,35 @@ import StoryScreen from "./StoryScreen/StoryScreen";
 import Scroll from "react-scroll";
 import { ScrollDirection } from "./Utils";
 
+const ScrollIndicator = ({ scrollInfo }: any) => {
+  const { scrollYAbsolute } = scrollInfo;
+  const isVisible = scrollYAbsolute < 100;
+  return (
+    <div
+      style={{
+        position: "fixed",
+        width: "100%",
+        height: "10%",
+        textAlign: "center",
+        paddingTop: 20,
+        top: isVisible ? 0 : "-20%",
+        transition: "top 1s ease 0s, background 0.5s ease 0s",
+        background: isVisible
+          ? "linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent)"
+          : "linear-gradient(0deg, transparent, transparent)",
+      }}
+    >
+      <img
+        style={{
+          height: "60%",
+          margin: "0px auto",
+        }}
+        src="https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2Fd49a075f-e639-450c-8418-3f356d8e4e49.gif?alt=media&token=c61a38d5-fb27-4e6e-94e5-64a8eab6b320"
+      />
+    </div>
+  );
+};
+
 const App = () => {
   let ScrollElement = Scroll.Element;
   const [currentScrollY, setCurrentScrollY] = useState({
@@ -69,6 +98,7 @@ const App = () => {
         <FundScreen />
       </ScrollElement>
 
+      <ScrollIndicator scrollInfo={currentScrollY} />
       <IntroStickyBanner hidden={false} scrollInfo={currentScrollY} />
       <SocialShareBanner scrollInfo={currentScrollY} />
     </div>
