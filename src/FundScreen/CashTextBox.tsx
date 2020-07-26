@@ -46,6 +46,7 @@ export default function CashTextBox(props: any) {
             boxSizing: "border-box",
             paddingLeft: "1.5em",
             caretColor: "#3e82fa",
+            userSelect: "initial",
           }}
         />
         <StripeCheckout

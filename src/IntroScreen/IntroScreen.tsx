@@ -27,7 +27,7 @@ const interpolate_transformations_with_scroll = (
 
   if (cached_activation_obj === undefined) {
     for (let index = 0; index < scroll_activations.length; index++) {
-      if (scroll_activations[index] === undefined) alert(index);
+      if (scroll_activations[index] === undefined) console.log(index);
       const { scrollRange } = scroll_activations[index];
       if (
         between(

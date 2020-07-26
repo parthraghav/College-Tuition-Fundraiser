@@ -159,10 +159,11 @@ export function FinalizingPrompt({ onSubmit, state }: any) {
           <div>
             <h1 style={{ margin: 0, fontSize: "2em" }}>What's your name?</h1>
             <input
-              className="custom-placeholder defocused"
+              className="custom-placeholder"
               value={currentValue}
               onChange={handleValueChange}
               style={{
+                outline: "0 !important",
                 margin: 0,
                 fontSize: "min(3em, 180%)",
                 textAlign: "center",
