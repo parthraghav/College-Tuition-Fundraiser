@@ -6,8 +6,10 @@ export default function StoryScreen(props: any) {
       style={{
         position: "relative",
         height: "fit-content",
-        background: "#f0eef1",
+        background: "rgb(255, 253, 253)",
         padding: "20px",
+        paddingTop: "80px",
+        paddingBottom: "80px",
       }}
     >
       <div style={{ margin: "auto", maxWidth: 600 }}>
