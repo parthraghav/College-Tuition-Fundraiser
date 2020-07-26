@@ -139,3 +139,7 @@
   margin: 0.4em;
   border-radius: 2em;
 }
+
+.custom-placeholder::placeholder {
+  opacity: 0.2;
+}
