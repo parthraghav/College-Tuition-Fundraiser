@@ -53,7 +53,8 @@ export default function FundScreen() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         display: "block",
-        paddingBottom: "120px",
+        paddingBottom: "20vh",
+        // paddingBottom: "120px",
         // flexDirection: "column",
         // overflow: "scroll",
       }}
