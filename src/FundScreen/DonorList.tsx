@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { withFirebase } from "../Core/Firebase";
 import CircularAvatar from "./Avatar";
 import "./styles.css";
-
-function CircularLoader(props: any) {
-  return <div className="loader" {...props} />;
-}
+import CircularLoader from "./CircularLoader";
 
 function DonorEntry({ name, amount, index }: any) {
   return (
