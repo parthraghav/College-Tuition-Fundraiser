@@ -9,7 +9,7 @@ export const onCreate = async (
   try {
     const paymentData = snapshot.data();
     const paymentId = snapshot.id;
-    const { amount, currency, token } = paymentData;
+    const { amount, currency, token, name } = paymentData;
     const paymentsRef = await admin
       .firestore()
       .collection("payments")
@@ -53,6 +53,8 @@ export const onCreate = async (
           lastPaidAt: chargeResponse.created,
           lastProcessedIp: token.client_ip,
           lastChargeId: chargeResponse.id,
+          name: name,
+          anonymous: name === "",
         }
       );
     } else {
