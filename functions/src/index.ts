@@ -1,9 +1,14 @@
-import * as functions from 'firebase-functions';
+import * as CloudFunctions from "firebase-functions";
+import * as admin from "firebase-admin";
+import Triggers from "./Triggers";
+const functions = CloudFunctions.region("us-central1");
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+admin.initializeApp();
+
+export const paymentOnCreate = functions.firestore
+  .document("payments/{paymentId}")
+  .onCreate(Triggers.Payment.onCreate);
+
+// export const paymentOnUpdate = functions.firestore
+//   .document("payments/{paymentId}")
+//   .onUpdate(Triggers.Payment.onUpdate);
