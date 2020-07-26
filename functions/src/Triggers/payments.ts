@@ -57,6 +57,20 @@ export const onCreate = async (
           anonymous: name === "",
         }
       );
+
+      // Update campaign info
+      await admin
+        .firestore()
+        .collection("info")
+        .doc("collegefundcampaign")
+        .set(
+          {
+            current: admin.firestore.FieldValue.increment(
+              chargeResponse.amount - chargeResponse.amount_refunded
+            ),
+          },
+          { merge: true }
+        );
     } else {
       functions.logger.error("Transaction wasn't successful");
     }
