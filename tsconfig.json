@@ -14,8 +14,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "noImplicitAny": false,
-    "exclude": ["node_modules", "functions"]
+    "noImplicitAny": false
   },
   "include": ["src"]
 }
