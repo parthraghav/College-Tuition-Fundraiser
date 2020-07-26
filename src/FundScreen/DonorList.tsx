@@ -3,6 +3,7 @@ import { withFirebase } from "../Core/Firebase";
 import CircularAvatar from "./Avatar";
 import "./styles.css";
 import CircularLoader from "./CircularLoader";
+import { numberWithCommas } from "../Utils";
 
 function DonorEntry({ name, amount, index }: any) {
   return (
@@ -13,7 +14,7 @@ function DonorEntry({ name, amount, index }: any) {
           <span>{name}</span>
         </div>
       </div>
-      <div className="table-body-cell">${amount}</div>
+      <div className="table-body-cell">${numberWithCommas(amount / 100)}</div>
     </div>
   );
 }
