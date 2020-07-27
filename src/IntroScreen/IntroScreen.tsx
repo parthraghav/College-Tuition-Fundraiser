@@ -162,7 +162,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [0, 100],
+      scrollRange: [0, 300],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
         get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
@@ -170,29 +170,6 @@ export default function IntroScreen({ scrollInfo }: any) {
       foregroundTransformation: [
         get_foreground_transform(GogglePos.On),
         get_foreground_transform(GogglePos.On),
-      ],
-    },
-
-    {
-      scrollRange: [100, 200],
-      backgroundTransformation: [
-        get_background_left_margin(BackgroundPosition.HalfLeft, win_dim),
-        get_background_left_margin(BackgroundPosition.Center, win_dim),
-      ],
-      foregroundTransformation: [
-        get_foreground_transform(GogglePos.On),
-        get_foreground_transform(GogglePos.Out),
-      ],
-    },
-    {
-      scrollRange: [200, 300],
-      backgroundTransformation: [
-        get_background_left_margin(BackgroundPosition.Center, win_dim),
-        get_background_left_margin(BackgroundPosition.Center, win_dim),
-      ],
-      foregroundTransformation: [
-        get_foreground_transform(GogglePos.Out),
-        get_foreground_transform(GogglePos.Out),
       ],
     },
     {
@@ -202,7 +179,7 @@ export default function IntroScreen({ scrollInfo }: any) {
         get_background_left_margin(BackgroundPosition.Center, win_dim),
       ],
       foregroundTransformation: [
-        get_foreground_transform(GogglePos.Out),
+        get_foreground_transform(GogglePos.On),
         get_foreground_transform(GogglePos.Down),
       ],
     },
@@ -236,7 +213,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
       foregroundTransformation: [
         get_foreground_transform(GogglePos.Up),
-        get_foreground_transform(GogglePos.Out),
+        get_foreground_transform(GogglePos.Up),
       ],
     },
     {
@@ -246,7 +223,7 @@ export default function IntroScreen({ scrollInfo }: any) {
         get_background_left_margin(BackgroundPosition.Center, win_dim),
       ],
       foregroundTransformation: [
-        get_foreground_transform(GogglePos.Out),
+        get_foreground_transform(GogglePos.Up),
         get_foreground_transform(GogglePos.Out),
       ],
     },

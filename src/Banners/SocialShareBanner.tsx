@@ -199,7 +199,7 @@ export default class SocialShareBanner extends Component<
           position: "fixed",
           height: "16%",
           minHeight: "100px",
-          bottom: isHidden ? "-16%" : 0,
+          bottom: isHidden ? "-20%" : 0,
           padding: "0em 1em",
           left: 0,
           right: 0,
