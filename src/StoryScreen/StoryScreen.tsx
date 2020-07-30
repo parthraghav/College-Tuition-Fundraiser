@@ -12,7 +12,7 @@ export default function StoryScreen(props: any) {
     >
       <div className="letter">
         <div className="textblock">
-          <h1 style={{ margin: 0 }}>🌈 Born different.</h1>
+          <h1 style={{ margin: 0 }}>🚀 Born different.</h1>
           <h2 style={{ margin: 0 }}>To make a difference.</h2>
         </div>
 
