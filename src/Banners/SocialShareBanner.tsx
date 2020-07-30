@@ -138,7 +138,7 @@ function CustomSnapchatShareButton(props: any) {
 function CustomInstagramShareButton(props: any) {
   return (
     <a
-      href="https://www.instagram.com/p/CCxgrCSJwlD/"
+      href="https://www.instagram.com/p/B9D7R64JeGz/"
       target="_blank"
       className="defocused"
     >
