@@ -22,7 +22,7 @@ const RandColors = colors.sort((a: any, b: any) => 0.5 - Math.random());
 
 export const AvatarUrlGenerator = (name: string, color: string) => {
   return `url(https://ui-avatars.com/api/?name=${encodeURIComponent(
-    name
+    name.replace(/[^\x00-\x7F]/g, "")
   )}&background=${color}&color=000&rounded=true&bold=true)`;
 };
 
