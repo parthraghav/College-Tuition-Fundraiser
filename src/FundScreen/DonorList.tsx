@@ -54,8 +54,8 @@ const DonorListBase = ({ firebase }: any) => {
       >
         <div className="resp-table">
           <div className="resp-table-caption">
-            <h1>Shoutout</h1>
-            <h3>To everybody who invested in me</h3>
+            <h1>Shoutout to {donorData.length} people</h1>
+            <h3>Who invested in my future</h3>
           </div>
 
           <div className="resp-table-body">
