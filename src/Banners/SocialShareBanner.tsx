@@ -152,7 +152,12 @@ interface SocialShareBannerState {}
 const SocialIconUrls = [
   {
     name: "Reddit",
-    component: RedditShareButton,
+    component: (props) => (
+      <RedditShareButton
+        title="Help Parth get his transcripts released from a business hold. Since coming out as gay, his financial support has been rescinded."
+        {...props}
+      />
+    ),
     url:
       "https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2Fsocial-287d9ad4f1b4aba3042c_1562906207.png?alt=media&token=bee4a1d7-60fc-4cfa-801d-f625101b58cc",
   },
@@ -170,13 +175,25 @@ const SocialIconUrls = [
   },
   {
     name: "Facebook",
-    component: FacebookShareButton,
+    component: (props) => (
+      <FacebookShareButton
+        quote="Help Parth get his transcripts released from a business hold. Since coming out as gay, his financial support has been rescinded."
+        hashtags={["lgbtq"]}
+        {...props}
+      />
+    ),
     url:
       "https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2Fsocial-65240092171b68e5a5674209c23d48c4ace02562.png?alt=media",
   },
   {
     name: "Twitter",
-    component: TwitterShareButton,
+    component: (props) => (
+      <TwitterShareButton
+        title="Help Parth release his transcripts from a business hold. Since coming out as gay, his financial support has been rescinded. Read more at"
+        hashtags={["lgbtq"]}
+        {...props}
+      />
+    ),
     url:
       "https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2Fsocial-cdfc2b6047b3a3492a9d91463951bee3dfba66c7.png?alt=media",
   },
@@ -190,7 +207,7 @@ export default class SocialShareBanner extends Component<
     super(props);
   }
   render() {
-    const isHidden = this.props.scrollInfo.scrollYPercent < 80;
+    const isHidden = this.props.scrollInfo.scrollYPercent < 40;
     return (
       <div
         style={{
