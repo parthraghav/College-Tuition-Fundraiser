@@ -49,9 +49,9 @@ export default function FundScreen() {
         position: "relative",
         width: "100%",
         background:
-          "url(https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F99694392183429944_43522157_2421-min.png?alt=media)",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
+          "url('https://firebasestorage.googleapis.com/v0/b/parthraghav-com.appspot.com/o/fund%2Fstatic%2F99694392183429944_43522157_2421-min.png?alt=media')",
+        backgroundSize: "contain",
+        backgroundRepeat: "repeat",
         display: "block",
         paddingBottom: "20vh",
         // paddingBottom: "120px",
