@@ -71,9 +71,11 @@ export default class IntroStickyBanner extends Component<
     let isHidden = true;
     // console.log("info,", this.props.scrollInfo.scrollYPercent);
     if (this.props.scrollInfo.scrollDirection === ScrollDirection.Negative) {
-      isHidden = this.props.scrollInfo.scrollYPercent > 10;
+      // isHidden = this.props.scrollInfo.scrollYPercent > 5;
+      isHidden = this.props.scrollInfo.scrollYAbsolute > 100;
     }
-    isHidden = this.props.scrollInfo.scrollYPercent > 10;
+    // isHidden = this.props.scrollInfo.scrollYPercent > 5;
+    isHidden = this.props.scrollInfo.scrollYAbsolute > 100;
 
     return (
       <div

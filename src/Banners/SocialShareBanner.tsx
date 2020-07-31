@@ -207,7 +207,9 @@ export default class SocialShareBanner extends Component<
     super(props);
   }
   render() {
-    const isHidden = this.props.scrollInfo.scrollYPercent < 40;
+    // const isHidden = this.props.scrollInfo.scrollYPercent < 40;
+    const isHidden = this.props.scrollInfo.scrollYAbsolute < 3400;
+
     return (
       <div
         style={{
