@@ -21,21 +21,25 @@ function DonorEntry({ name, amount, index }: any) {
 
 const DonorListBase = ({ firebase }: any) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [donorData, setDonorData] = useState<object[]>([]);
+  const [donorData, setDonorData] = useState<Object[]>([]);
   useEffect(() => {
-    const usersRef = firebase.db.collection("users");
-    let query = usersRef.orderBy("totalPaidAmount", "desc");
+    const donorListSnap = firebase.db.collection("info").doc("donorlist");
 
-    const unsubscribe = query.onSnapshot((snapshot: any) => {
-      if (snapshot.size) {
-        let donorDataFromSnapshot: any = [];
-        snapshot.forEach((doc: { data: () => any }) =>
-          donorDataFromSnapshot.push({ ...doc.data() })
-        );
-        setDonorData(donorDataFromSnapshot);
-      } else {
-        console.log(snapshot, "something's off");
-      }
+    const unsubscribe = donorListSnap.onSnapshot((snapshot: any) => {
+      const data = snapshot.data();
+      const dataArr: any = Object.values(data).sort(
+        (a: any, b: any) => b.amount - a.amount
+      );
+      setDonorData(dataArr);
+      // if (snapshot.size) {
+      //   let donorDataFromSnapshot: any = [];
+      //   snapshot.forEach((doc: { data: () => any }) =>
+      //     donorDataFromSnapshot.push({ ...doc.data() })
+      //   );
+      //   setDonorData(donorDataFromSnapshot);
+      // } else {
+      //   console.log(snapshot, "something's off");
+      // }
       setIsLoading(false);
     });
     return () => {
@@ -63,11 +67,11 @@ const DonorListBase = ({ firebase }: any) => {
               <CircularLoader />
             ) : (
               donorData.map(
-                ({ name, totalPaidAmount, anonymous }: any, index: number) => (
+                ({ name, amount, anonymous }: any, index: number) => (
                   <DonorEntry
                     key={index}
                     name={anonymous ? "Anonymous" : name}
-                    amount={totalPaidAmount}
+                    amount={amount}
                     index={index}
                   />
                 )
