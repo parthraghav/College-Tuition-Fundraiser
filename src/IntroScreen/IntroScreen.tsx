@@ -217,7 +217,7 @@ export default function IntroScreen({ scrollInfo }: any) {
       ],
     },
     {
-      scrollRange: [700, 10000],
+      scrollRange: [700, 1000000000000000],
       backgroundTransformation: [
         get_background_left_margin(BackgroundPosition.Center, win_dim),
         get_background_left_margin(BackgroundPosition.Center, win_dim),
