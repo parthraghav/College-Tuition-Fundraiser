@@ -1,3 +1,2 @@
-import * as Payment from "./payments";
-
-export default { Payment };
+export * as Payment from "./payments";
+export * as User from "./users";
