@@ -1,6 +1,7 @@
 import * as CloudFunctions from "firebase-functions";
 import * as admin from "firebase-admin";
-import Triggers from "./Triggers";
+import * as Triggers from "./Triggers";
+import * as Temp from "./Requests/temp";
 const functions = CloudFunctions.region("us-central1");
 
 admin.initializeApp();
@@ -12,3 +13,11 @@ export const paymentOnCreate = functions.firestore
 // export const paymentOnUpdate = functions.firestore
 //   .document("payments/{paymentId}")
 //   .onUpdate(Triggers.Payment.onUpdate);
+
+export const userOnWrite = functions.firestore
+  .document("users/{userId}")
+  .onWrite(Triggers.User.onWrite);
+
+export const copyUserCollectionToDonorList = functions.https.onRequest(
+  Temp.copyUserCollectionToDonorList
+);
