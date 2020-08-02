@@ -109,7 +109,7 @@ function ProgressVizGraphicBase({ firebase }: any) {
               bottom: "0.3em",
               left: `max(0px, ${
                 (campaignDetails.current * 100) / campaignDetails.target
-              }% - 1.5em)`,
+              }% - 3em)`,
             }}
           />
         </div>
