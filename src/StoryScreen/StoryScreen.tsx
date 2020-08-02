@@ -139,7 +139,7 @@ export default function StoryScreen(props: any) {
           </blockquote>
         </div>
         <p className="textblock">Thank you for your time!</p>
-        <div className="imageHolder">
+        <div className="videoHolder">
           <iframe
             width="100%"
             height="400"

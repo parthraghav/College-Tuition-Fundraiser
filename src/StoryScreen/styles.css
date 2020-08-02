@@ -1,5 +1,6 @@
 .letter {
   padding: 80px 0px;
+  padding-bottom: 0px;
 }
 .letter a:not(.disable-highlight) {
   color: black;
@@ -21,6 +22,11 @@
   text-align: center;
 }
 
+.videoHolder {
+  background: radial-gradient(#3c3c3c, #212121);
+  padding: 60px 20px;
+  text-align: center;
+}
 .imageHolder img {
   width: 33%;
   min-width: min(310px, 100vw);
