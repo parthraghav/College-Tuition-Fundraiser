@@ -139,6 +139,15 @@ export default function StoryScreen(props: any) {
           </blockquote>
         </div>
         <p className="textblock">Thank you for your time!</p>
+        <div className="imageHolder">
+          <iframe
+            width="100%"
+            height="400"
+            src="https://www.youtube.com/embed/XNUi4iKIgMg?showinfo=0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            style={{ border: 0, borderRadius: 10 }}
+          ></iframe>
+        </div>
       </div>
     </div>
   );
