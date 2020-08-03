@@ -143,3 +143,17 @@
 .custom-placeholder::placeholder {
   opacity: 0.2;
 }
+
+.alertbox {
+  font-size: 0.9em;
+  text-align: center;
+  background: #ffeb3b;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.alertbox a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
