@@ -28,7 +28,9 @@ function Flag(props: any) {
   return (
     <div
       style={{
-        transform: "scale(-1,1)",
+        transform: "scale(1, 1) translate(50%,0%)", // when 95% is reached
+        // "scale(-1,1)",
+
         maxWidth: "fit-content",
         ...props.style,
       }}
@@ -67,7 +69,7 @@ function ProgressVizGraphicBase({ firebase }: any) {
 
   let current = numberWithCommas(Math.round(campaignDetails.current / 100));
   let target = numberWithCommas(Math.round(campaignDetails.target / 100));
-
+  let percentage = (campaignDetails.current * 100) / campaignDetails.target;
   return (
     <div
       style={{
@@ -80,7 +82,7 @@ function ProgressVizGraphicBase({ firebase }: any) {
         // alignItems: "stretch",
         margin: "auto",
         display: "grid",
-        placeItems: "end",
+        placeItems: "center",
         userSelect: "none",
       }}
     >
@@ -107,9 +109,7 @@ function ProgressVizGraphicBase({ firebase }: any) {
             style={{
               position: "absolute",
               bottom: "0.3em",
-              left: `max(0px, ${
-                (campaignDetails.current * 100) / campaignDetails.target
-              }% - 3em)`,
+              left: `max(0px, ${percentage}% - 3em)`,
             }}
           />
         </div>
