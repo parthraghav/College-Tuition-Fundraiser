@@ -1,7 +1,7 @@
 import * as CloudFunctions from "firebase-functions";
 import * as admin from "firebase-admin";
 import * as Triggers from "./Triggers";
-import * as Temp from "./Requests/temp";
+import * as Requests from "./Requests";
 const functions = CloudFunctions.region("us-central1");
 
 admin.initializeApp();
@@ -18,6 +18,11 @@ export const userOnWrite = functions.firestore
   .document("users/{userId}")
   .onWrite(Triggers.User.onWrite);
 
+////////////////////////////////// REQUESTS //////////////////////////////////
+export const setCurrentCollectedAmount = functions.https.onRequest(
+  Requests.Audit.setCurrentCollectedAmount
+);
+
 export const copyUserCollectionToDonorList = functions.https.onRequest(
-  Temp.copyUserCollectionToDonorList
+  Requests.Temp.copyUserCollectionToDonorList
 );
