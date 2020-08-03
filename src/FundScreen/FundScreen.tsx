@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AlertBox from "./AlertBox";
 import ProgressVizGraphic from "./ProgressVizGraphic";
 import CashTextBox from "./CashTextBox";
 import QuickPaySelector from "./QuickPaySelector";
@@ -6,6 +7,7 @@ import DonorList from "./DonorList";
 import { FirebaseContext } from "../Core/Firebase";
 import { tokenHandler } from "../Core/TokenManager";
 import { FinalizingPrompt } from "./FinalizingPrompt";
+import "./styles.css";
 
 interface FundScreenState {}
 
@@ -61,15 +63,15 @@ export default function FundScreen() {
     >
       <div
         style={{
-          height: "20vh",
-          minHeight: "128px",
+          paddingTop: "1em",
         }}
       >
+        <AlertBox />
         <ProgressVizGraphic />
       </div>
       <div
         style={{
-          height: "20vh",
+          height: "10vh",
           minHeight: "128px",
         }}
       >
