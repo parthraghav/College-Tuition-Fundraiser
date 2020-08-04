@@ -6,7 +6,7 @@ function Truck(props: any) {
   return (
     <div
       style={{
-        transform: "scale(-1,1)",
+        transform: "scale(-1,1) translate(50%)",
         maxWidth: "fit-content",
         ...props.style,
       }}
