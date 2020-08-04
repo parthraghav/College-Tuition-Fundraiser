@@ -56,6 +56,7 @@ export default function FundScreen() {
         backgroundRepeat: "repeat",
         display: "block",
         paddingBottom: "20vh",
+        paddingTop: "1em",
         // paddingBottom: "120px",
         // flexDirection: "column",
         // overflow: "scroll",
