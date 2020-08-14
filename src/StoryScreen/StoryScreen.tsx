@@ -3,13 +3,7 @@ import "./styles.css";
 
 export default function StoryScreen(props: any) {
   return (
-    <div
-      style={{
-        position: "relative",
-        height: "fit-content",
-        background: "rgb(255, 253, 253)",
-      }}
-    >
+    <div className="letterContainer">
       <div className="letter">
         <div className="textblock">
           <h1 style={{ margin: 0 }}>🚀 Born different.</h1>
@@ -145,7 +139,7 @@ export default function StoryScreen(props: any) {
             height="400"
             src="https://www.youtube.com/embed/XNUi4iKIgMg?showinfo=0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            style={{ border: 0, borderRadius: 10 }}
+            className="video"
           ></iframe>
         </div>
       </div>
