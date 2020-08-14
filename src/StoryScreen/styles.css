@@ -1,3 +1,9 @@
+.letterContainer {
+  position: relative;
+  height: fit-content;
+  background: rgb(255, 253, 253);
+}
+
 .letter {
   padding: 80px 0px;
   padding-bottom: 0px;
@@ -26,6 +32,10 @@
   background: radial-gradient(#3c3c3c, #212121);
   padding: 60px 20px;
   text-align: center;
+}
+.video {
+  border: 0;
+  border-radius: 10;
 }
 .imageHolder img {
   width: 33%;
